@@ -13,9 +13,4 @@ public class SalesManagementSoftwareApplication {
 		SpringApplication.run(SalesManagementSoftwareApplication.class, args);
 	}
 
-	@GetMapping("/")
-	public static String hello() {
-		return "hello world !";
-	}
-
 }
