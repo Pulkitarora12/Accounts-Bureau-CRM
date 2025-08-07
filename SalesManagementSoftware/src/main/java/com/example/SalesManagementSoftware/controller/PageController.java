@@ -1,17 +1,28 @@
 package com.example.SalesManagementSoftware.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.SalesManagementSoftware.entity.Employee;
 import com.example.SalesManagementSoftware.forms.EmployeeForm;
+import com.example.SalesManagementSoftware.services.UserService;
 
 import jakarta.servlet.http.HttpSession;
-
-import org.springframework.ui.Model;
+import jakarta.validation.Valid;
 
 @Controller
 public class PageController {
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/")
     public String redirectHome() {
@@ -34,6 +45,57 @@ public class PageController {
     public String register(Model model, HttpSession session) {
         EmployeeForm employeeForm = new EmployeeForm();
         model.addAttribute("employeeForm", employeeForm);
+        
+        String message = (String) session.getAttribute("message");
+        System.out.println("Session attribute 'message' retrieved: " + message);
+
+        if (message != null) {
+            model.addAttribute("message", message);
+            session.removeAttribute("message");
+        }
+        
         return "register"; // This will render register.html from templates
+    }
+
+    @PostMapping("/do-register")
+    public String processRegister(@Valid EmployeeForm userForm,BindingResult result,HttpSession session) {
+        
+        //fetch data from form
+        System.out.println(userForm);
+
+        //validate form data
+        if (result.hasErrors()) {
+            return "register"; // no need to redirect just return to same page
+        }
+
+        //save to database
+        // User user = User  we will not use builder as it will not save default values
+        //             .builder()
+        //             .name(userForm.getName())
+        //             .email(userForm.getEmail())
+        //             .password(userForm.getPassword())
+        //             .about(userForm.getAbout())
+        //             .phoneNumber(userForm.getPhoneNumber())
+        //             .profileLink(defaultProfilePic)
+        //             .build();
+        
+        //creating user object and saving manually
+        Employee user = new Employee();
+        user.setName(userForm.getName());
+        user.setEmail(userForm.getEmail());
+        user.setPassword(passwordEncoder.encode(userForm.getPassword()));
+        user.setAbout(userForm.getAbout());
+        user.setPhoneNumber(userForm.getPhoneNumber());
+        user.setEnabled(true);
+
+        Employee savedUser = userService.saveUser(user);
+
+        //message that info is saved
+        session.setAttribute("message", "User registered successfully!");
+        System.out.println("Session attribute 'message' set: " + session.getAttribute("message"));
+
+
+        //redirect to login page
+        return "redirect:/register"; 
     }
 }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.example.SalesManagementSoftware.entity.Employee;
 
 @Repository
-public interface PageRepository extends JpaRepository<Employee, String> {
+public interface PageRepository extends JpaRepository<Employee, Long> {
     // Define any custom query methods if needed
 
     Optional<Employee> findByEmail(String email);

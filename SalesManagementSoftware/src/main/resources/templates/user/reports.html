@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  th:replace="~{base::parent(~{::#content}, ~{::title}, ~{::script})}"
+>
+  <head>
+    <title th:text="${loggedInUser.name} + ' | Add Repory'">
+      Profile Page
+    </title>
+  </head>
+  <body>
+    <div id="content">
+      <!--sidebar-->
+      <div th:if="${loggedInUser}">
+        <div th:replace="~{user/sidebar :: sidebar}"></div>
+      </div>
+
+      <div class="pl-66 pt-10 flex flex-col text-amber-50">
+        <div class="grid grid-cols-12">
+          <div class="col-span-3"></div>
+          <div class="col-span-12 md:col-span-6">
+            <div
+              class="card block p-6 mb-20 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700"
+            >
+              <div th:replace="~{message::messagbox}"></div> 
+              <h1 class="text-2xl font-semibold">Add new Report</h1>
+
+              <form
+                th:action="@{/user/report/add}"
+                method="post"
+                class="mt-5"
+                th:object="${contactForm}"
+                enctype="multipart/form-data"
+                novalidate
+              >
+                <div class="mb-3">
+                  <!--name form-->
+                  <div>
+                    <label
+                      for="name"
+                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      >Name</label
+                    >
+                    <input
+                      type="text"
+                      th:field="*{name}"
+                      class="mb-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="John Nolan"
+                      required
+                    />
+                    <p
+                      class="text-orange-600 py-2 px-1 text-xs"
+                      th:if="${#fields.hasErrors('name')}"
+                      th:errors="*{name}"
+                    ></p>
+                  </div>
+                  <!--email form-->
+                  <div>
+                    <label
+                      for="email"
+                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      >Email Address</label
+                    >
+                    <input
+                      type="email"
+                      th:field="*{email}"
+                      class="mb-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="john@gmail.com"
+                      required
+                    />
+                    <p
+                      class="text-orange-600 py-2 px-1 text-xs"
+                      th:if="${#fields.hasErrors('email')}"
+                      th:errors="*{email}"
+                    >
+                      Email is required
+                    </p>
+                  </div>
+                  <!--phone number form-->
+                  <div>
+                    <label
+                      for="phonenumber"
+                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      >Phone Number</label
+                    >
+                    <input
+                      type="text"
+                      th:field="*{phoneNumber}"
+                      class="mb-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="99999*****"
+                      required
+                    />
+                    <p
+                      class="text-orange-600 py-2 px-1 text-xs"
+                      th:if="${#fields.hasErrors('phoneNumber')}"
+                      th:errors="*{phoneNumber}"
+                    ></p>
+                  </div>
+                  <!--address form-->
+                  <div>
+                    <label
+                      for="address"
+                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      >Address</label
+                    >
+                    <textarea
+                      rows="5"
+                      th:field="*{address}"
+                      class="mb-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 h-20"
+                      placeholder="Address..."
+                      required
+                    ></textarea>
+                    <p
+                      class="text-orange-600 py-2 px-1 text-xs"
+                      th:if="${#fields.hasErrors('address')}"
+                      th:errors="*{address}"
+                    ></p>
+                  </div>
+                  <!--discription form-->
+                  <div>
+                    <label
+                      for="description"
+                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      >Contact Description</label
+                    >
+                    <textarea
+                      rows="5"
+                      th:field="*{description}"
+                      class="mb-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 h-20"
+                      placeholder="Something you want to write about ...."
+                      required
+                    ></textarea>
+                  </div>
+
+                  <!--social links-->
+                  <div class="flex gap-10 justify-betw">
+                    <div class="w-full">
+                      <div>
+                        <label
+                          for="linkedin"
+                          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                          >LinkedIn Id link</label
+                        >
+                        <input
+                          type="text"
+                          th:field="*{linkedinLink}"
+                          class="mb-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          placeholder="linkedin link"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="w-full">
+                      <div>
+                        <label
+                          for="websiteLink"
+                          class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
+                          >Website Link</label
+                        >
+                        <input
+                          type="text"
+                          th:field="*{websiteLink}"
+                          class="mb-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          placeholder="Website Link"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label
+                      class="block mt mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                      for="profilePicture"
+                      >Upload Image</label
+                    >
+                    <input
+                      id="image_file_input"
+                      class="block w-full mb-5 text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                      type="file"
+                      th:field="*{profilePicture}"
+                    />
+                    <img
+                      src=""
+                      id="upload-image-preview"
+                      alt=""
+                      class="max-h-52 mx-auto rounded"
+                    />
+                  </div>
+
+                  <!--add favouurites-->
+                  <div class="flex items-center mb-4 mt-1">
+                    <input
+                      type="checkbox"
+                      class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                      th:field="*{favourite}"
+                      id="favourite"
+                    />
+                    <label
+                      for="favourite"
+                      class="ms-2 text-sm font-medium text-gray-100 text-sm"
+                      >Add to favourites</label
+                    >
+                  </div>
+                </div>
+                <div class="button-container text-center">
+                  <button class="bg-green-700 px-3 py-2 rounded" type="submit">
+                    Add Contact
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script th:src="@{'/js/admin.js'}"></script>
+    <script>
+      console.log("Add contact page script loaded");
+    </script>
+  </body>
+</html>

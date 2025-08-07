@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
@@ -18,6 +20,10 @@ import lombok.ToString;
 
 import java.util.*;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 @Entity
 @Data
 @Getter
@@ -25,10 +31,11 @@ import java.util.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Employee {
+public class Employee implements UserDetails {
     
     @Id
-    private String employeeId; 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long employeeId; 
 
     @Column(name = "employee_name", nullable = false, length = 255)
     private String name;
@@ -52,12 +59,8 @@ public class Employee {
     @Column(length = 100)
     private String department;
 
-    @Column(length = 100)
-    private String designation;
-
-    private boolean enabled = false; 
-    private boolean emailVerified = false;
-    private boolean phoneVerified = false;
+    private boolean enabled = true; 
+    private boolean emailVerified = true;
 
     @Enumerated(value=EnumType.STRING)
     private Providers provider = Providers.SELF;
@@ -65,7 +68,7 @@ public class Employee {
 
     // Changed from contacts to dailyReports
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<Reports> reports = new ArrayList<>();
+    private List<VisitRecord> reports = new ArrayList<>();
 
     // Add expenses relationship
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
@@ -92,4 +95,38 @@ public class Employee {
         return this.role == Role.EMPLOYEE;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority("ROLE_" + this.getRole().name()));
+    }
+
+    @Override
+    public String getUsername() {
+        return this.email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return this.enabled;
+    }
+
+    @Override
+    public String getPassword() {   
+        return this.password;
+    }
 }
