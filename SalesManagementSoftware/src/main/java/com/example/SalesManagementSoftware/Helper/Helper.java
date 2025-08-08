@@ -11,36 +11,35 @@ import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 public class Helper {
     
      public static String getEmailOfLoggedInUser(Authentication authentication) {
+    Logger logger = LogManager.getLogger(Helper.class);
+    
+    if (authentication == null) {
+        logger.warn("No authentication found — user might not be logged in.");
+        return null; // or throw a custom exception
+    }
 
-        Logger logger = LogManager.getLogger(Helper.class);
-        String email = "";
+    String email = null;
 
-        //sign in using google or github
-        if (authentication instanceof OAuth2AuthenticationToken) {
-            
+    if (authentication instanceof OAuth2AuthenticationToken) {
+        var token = (OAuth2AuthenticationToken) authentication;
+        var registerId = token.getAuthorizedClientRegistrationId();
+        var principal = (DefaultOAuth2User) authentication.getPrincipal();
 
-            var token = (OAuth2AuthenticationToken)authentication;
-            var registerId = token.getAuthorizedClientRegistrationId();
-
-            DefaultOAuth2User user  = (DefaultOAuth2User)authentication.getPrincipal();
-            
-            //google
-            if (registerId.equals("google")) {
-
-                email = user.getAttribute("email").toString();
-                
-                System.out.println("Getting email from google");
-                // logger.info(user.getAttribute("email").toString());
-               
-            }
-
-        } else {   //using email and password
-            System.out.println("Getting user from local db");
-            email = authentication.getName();
+        if ("google".equalsIgnoreCase(registerId)) {
+            email = principal.getAttribute("email");
+            logger.info("Email from Google login: " + email);
+        } else {
+            logger.warn("OAuth2 provider not handled: " + registerId);
         }
 
-        return email;
+    } else {
+        email = authentication.getName();
+        logger.info("Email from local DB: " + email);
     }
+
+    return email;
+}
+
 
     public static String getLinkForEmailVerification(String emailToken) {
 

@@ -36,14 +36,22 @@ public class VisitReportController {
     private static final Logger logger = LoggerFactory.getLogger(VisitReportController.class);
 
     @GetMapping("/add")
-    public String addReport(Model model, HttpSession session) {
-        model.addAttribute("form", new VisitRecordForm());
+    public String addReport(Model model, HttpSession session, Authentication authentication) {
+        String email = Helper.getEmailOfLoggedInUser(authentication);
+        Employee user = userService.getUserByEmail(email);
+
+        model.addAttribute("loggedInUser", user);
+        
+        VisitRecordForm form = new VisitRecordForm();
+        form.setScoutName(user.getName());
+        model.addAttribute("form", form);
+        
         String message = (String) session.getAttribute("message");
         if (message != null) {
             model.addAttribute("message", message);
             session.removeAttribute("message");
         }
-        return "user/addVisitRecord";
+        return "user/addVisitRecord"; // Template expects 'loggedInUser' but it's not provided
     }
 
     @PostMapping("/add")

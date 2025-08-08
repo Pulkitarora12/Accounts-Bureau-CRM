@@ -11,7 +11,7 @@
   <body>
     <div id="content">
       <!--sidebar-->
-      <div th:if="${loggedInUser}">
+      <div th:if="${loggedInUser != null}" th:text="${loggedInUser.name}">
         <div th:replace="~{user/sidebar :: sidebar}"></div>
       </div>
 
