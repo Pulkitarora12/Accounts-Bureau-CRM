@@ -8,7 +8,7 @@ import com.example.SalesManagementSoftware.entity.VisitRecord;
 
 public interface UserService {
     
-    Employee saveUser(Employee user);
+    Employee saveUser(Employee user, boolean isNewUser);
     
     Optional<Employee> getUserById(Long id);
     

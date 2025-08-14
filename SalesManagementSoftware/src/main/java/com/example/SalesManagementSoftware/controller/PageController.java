@@ -1,14 +1,17 @@
 package com.example.SalesManagementSoftware.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.SalesManagementSoftware.entity.Employee;
+import com.example.SalesManagementSoftware.entity.Role;
 import com.example.SalesManagementSoftware.forms.EmployeeForm;
 import com.example.SalesManagementSoftware.services.UserService;
 
@@ -37,7 +40,15 @@ public class PageController {
     }
 
     @GetMapping("/login")
-    public String login() {
+    public String login(Model model, HttpSession session) {
+
+        String message = (String) session.getAttribute("message");
+
+        if (message != null) {
+            model.addAttribute("message", message);
+            session.removeAttribute("message");
+        }
+
         return "login"; // This will render login.html from templates
     }
 
@@ -86,9 +97,10 @@ public class PageController {
         user.setPassword(passwordEncoder.encode(userForm.getPassword()));
         user.setAbout(userForm.getAbout());
         user.setPhoneNumber(userForm.getPhoneNumber());
-        user.setEnabled(true);
+        user.setEnabled(false);
+        user.setRole(Role.EMPLOYEE);
 
-        Employee savedUser = userService.saveUser(user);
+        Employee savedUser = userService.saveUser(user, true);
 
         //message that info is saved
         session.setAttribute("message", "User registered successfully!");
@@ -97,5 +109,24 @@ public class PageController {
 
         //redirect to login page
         return "redirect:/register"; 
+    }
+
+    @GetMapping("/about")
+    public String about () {
+        return "about";
+    }
+
+    @GetMapping("/contact")
+    public String contact() {
+        return "contact";
+    }
+
+    @ModelAttribute("loggedInUser")
+    public Employee getLoggedInUser(Authentication authentication) {
+        if (authentication != null && authentication.isAuthenticated() && 
+            authentication.getPrincipal() instanceof Employee) {
+            return (Employee) authentication.getPrincipal();
+        }
+        return null;
     }
 }

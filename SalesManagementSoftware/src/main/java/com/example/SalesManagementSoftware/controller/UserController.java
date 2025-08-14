@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.SalesManagementSoftware.Helper.Helper;
+import com.example.SalesManagementSoftware.entity.Employee;
 import com.example.SalesManagementSoftware.services.UserService;
 
 @Controller
@@ -23,6 +25,11 @@ public class UserController {
     //user profile page
     @GetMapping("/profile")
     public String userProfile(Model model, Authentication authentication) {
+
+        String email = Helper.getEmailOfLoggedInUser(authentication);
+        Employee user = userService.getUserByEmail(email);
+
+        model.addAttribute("loggedInUser", user);
         return "user/profile";
     }
 }

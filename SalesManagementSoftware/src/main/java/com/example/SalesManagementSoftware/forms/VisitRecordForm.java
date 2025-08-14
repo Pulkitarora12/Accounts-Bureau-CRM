@@ -56,5 +56,9 @@ public class VisitRecordForm {
 
     private boolean revisitRequired;
     private boolean agreedForDemo;
+    public void setId(Object object) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setId'");
+    }
     
 }

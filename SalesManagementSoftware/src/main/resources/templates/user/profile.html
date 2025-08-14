@@ -13,8 +13,17 @@
   <body>
     <div id="main-content">
       <!-- Sidebar -->
-      <div th:if="${loggedInUser != null}">
-        <div th:replace="~{user/sidebar :: sidebar}"></div>
+      <div class="col-md-3 sidebar">
+        <!-- Show admin sidebar if user is ADMIN, employee sidebar otherwise -->
+        <div
+          th:if="${loggedInUser != null and loggedInUser.role.name() == 'ADMIN'}"
+          th:replace="user/sidebar :: sidebar"
+        ></div>
+
+        <div
+          th:if="${loggedInUser != null and loggedInUser.role.name() != 'ADMIN'}"
+          th:replace="user/empSidebar :: sidebar"
+        ></div>
       </div>
 
       <div
@@ -31,7 +40,7 @@
             >
               <!-- Profile Picture -->
               <img
-                th:src="${loggedInUser.profileLink} ?: '/images/1630498303816.jpeg'"
+                th:src="'/images/1630498303816.jpeg'"
                 alt="Profile"
                 class="w-32 h-32 rounded-full object-cover border-4 border-indigo-500 shadow-sm"
               />

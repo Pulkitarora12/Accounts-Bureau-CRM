@@ -4,8 +4,8 @@
   th:replace="~{base::parent(~{::#content}, ~{::title}, ~{::script})}"
 >
   <head>
-    <title th:text="${loggedInUser.name} + ' | Your Visit Records'">
-      Visit Records Page
+    <title th:text="${loggedInUser.name} + ' | Search Visit Records'">
+      Search Visit Records Page
     </title>
   </head>
   <body>
@@ -25,8 +25,11 @@
       </div>
 
       <div class="pl-66 pt-5 flex flex-col text-center">
-        <h1 class="text-amber-50 text-5xl">All Your Visit Records</h1>
-        <p class="text-amber-50">List of your visit records</p>
+        <h1 class="text-amber-50 text-5xl">Search Results</h1>
+        <p
+          class="text-amber-50"
+          th:text="${pageVisitRecord.totalElements} + ' Results found'"
+        ></p>
 
         <div class="visits_container p-5">
           <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -44,9 +47,24 @@
                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     >
                       <option selected>Select Field</option>
-                      <option value="scoutName">Scout Name</option>
-                      <option value="companyName">Company Name</option>
-                      <option value="contactPersonName">Contact Person</option>
+                      <option
+                        value="scoutName"
+                        th:selected="${field == 'scoutName'}"
+                      >
+                        Scout Name
+                      </option>
+                      <option
+                        value="companyName"
+                        th:selected="${field == 'companyName'}"
+                      >
+                        Company Name
+                      </option>
+                      <option
+                        value="contactPersonName"
+                        th:selected="${field == 'contactPersonName'}"
+                      >
+                        Contact Person
+                      </option>
                     </select>
                   </div>
 
@@ -73,6 +91,7 @@
                       name="keyword"
                       type="text"
                       id="table-search-visits"
+                      th:value="${keyword}"
                       class="p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Search for visit records"
                     />
@@ -82,7 +101,7 @@
                   <div>
                     <button
                       type="submit"
-                      class="px-2 py-1.5 rounded-lg bg-blue-700"
+                      class="px-2 py-1.5 rounded-lg bg-blue-700 text-white"
                     >
                       Search
                     </button>
@@ -93,7 +112,7 @@
                     <button
                       type="button"
                       onclick="exportData()"
-                      class="flex items-center px-2 py-1.5 rounded-lg bg-blue-700"
+                      class="flex items-center px-2 py-1.5 rounded-lg bg-blue-700 text-white"
                     >
                       Export
                     </button>
@@ -102,6 +121,7 @@
               </form>
             </div>
 
+            <!-- Visit Table -->
             <table
               id="visit_table"
               class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
@@ -109,144 +129,90 @@
               <thead
                 class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
               >
+                <!-- same table headers as original page -->
                 <tr>
-                  <th scope="col" class="px-6 py-3">ID</th>
-                  <th scope="col" class="px-6 py-3">Scout Name</th>
-                  <th scope="col" class="px-6 py-3">Place of Visit</th>
-                  <th scope="col" class="px-6 py-3">Company Name</th>
-                  <th scope="col" class="px-6 py-3">New/Revisit</th>
-                  <th scope="col" class="px-6 py-3">Contact Person</th>
-                  <th scope="col" class="px-6 py-3">Contact Number</th>
-                  <th scope="col" class="px-6 py-3">Nature of Business</th>
-                  <th scope="col" class="px-6 py-3">Computer</th>
-                  <th scope="col" class="px-6 py-3">Tally</th>
-                  <th scope="col" class="px-6 py-3">Last Upgrade</th>
-                  <th scope="col" class="px-6 py-3">Opportunity</th>
-                  <th scope="col" class="px-6 py-3">Revisit Required</th>
-                  <th scope="col" class="px-6 py-3">Agreed for Demo</th>
-                  <th scope="col" class="px-6 py-3">Date Filled</th>
-                  <th scope="col" class="px-6 py-3">Employee</th>
-                  <th scope="col" class="px-6 py-3">Action</th>
+                  <th class="px-6 py-3">ID</th>
+                  <th class="px-6 py-3">Scout Name</th>
+                  <th class="px-6 py-3">Place of Visit</th>
+                  <th class="px-6 py-3">Company Name</th>
+                  <th class="px-6 py-3">New/Revisit</th>
+                  <th class="px-6 py-3">Contact Person</th>
+                  <th class="px-6 py-3">Contact Number</th>
+                  <th class="px-6 py-3">Nature of Business</th>
+                  <th class="px-6 py-3">Computer</th>
+                  <th class="px-6 py-3">Tally</th>
+                  <th class="px-6 py-3">Last Upgrade</th>
+                  <th class="px-6 py-3">Opportunity</th>
+                  <th class="px-6 py-3">Revisit Required</th>
+                  <th class="px-6 py-3">Agreed for Demo</th>
+                  <th class="px-6 py-3">Date Filled</th>
+                  <th class="px-6 py-3">Employee</th>
+                  <th class="px-6 py-3">Action</th>
                 </tr>
               </thead>
               <tbody>
-                <tr
-                  th:each="v : ${pageVisitRecord.content}"
-                  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
-                >
-                  <td class="px-6 py-4" th:text="${v.id}">ID</td>
-                  <td class="px-6 py-4" th:text="${v.scoutName}">Scout Name</td>
-                  <td class="px-6 py-4" th:text="${v.placeOfVisit}">
-                    Place of Visit
-                  </td>
-                  <td class="px-6 py-4" th:text="${v.companyName}">
-                    Company Name
-                  </td>
-                  <td class="px-6 py-4" th:text="${v.newOrRevisit}">
-                    New/Revisit
-                  </td>
-                  <td class="px-6 py-4" th:text="${v.contactPersonName}">
-                    Contact Person
-                  </td>
-                  <td class="px-6 py-4" th:text="${v.contactNumber ?: 'N/A'}">
-                    Contact Number
-                  </td>
+                <tr th:each="v : ${pageVisitRecord.content}">
+                  <td class="px-6 py-4" th:text="${v.id}"></td>
+                  <td class="px-6 py-4" th:text="${v.scoutName}"></td>
+                  <td class="px-6 py-4" th:text="${v.placeOfVisit}"></td>
+                  <td class="px-6 py-4" th:text="${v.companyName}"></td>
+                  <td class="px-6 py-4" th:text="${v.newOrRevisit}"></td>
+                  <td class="px-6 py-4" th:text="${v.contactPersonName}"></td>
+                  <td
+                    class="px-6 py-4"
+                    th:text="${v.contactNumber ?: 'N/A'}"
+                  ></td>
                   <td
                     class="px-6 py-4"
                     th:text="${v.natureOfBusiness ?: 'N/A'}"
-                  >
-                    Nature of Business
+                  ></td>
+                  <td class="px-6 py-4">
+                    <span th:text="${v.computer} ? 'Yes' : 'No'"></span>
                   </td>
                   <td class="px-6 py-4">
-                    <div
-                      th:class="${v.computer} ? 'h-2.5 w-2.5 rounded-full bg-green-500 me-2' : 'h-2.5 w-2.5 rounded-full bg-gray-500 me-2'"
-                    ></div>
-                    <span th:text="${v.computer} ? 'Yes' : 'No'">No</span>
+                    <span th:text="${v.tally} ? 'Yes' : 'No'"></span>
+                  </td>
+                  <td
+                    class="px-6 py-4"
+                    th:text="${v.lastUpgrade ?: 'N/A'}"
+                  ></td>
+                  <td
+                    class="px-6 py-4"
+                    th:text="${v.opportunity ?: 'N/A'}"
+                  ></td>
+                  <td class="px-6 py-4">
+                    <span th:text="${v.revisitRequired} ? 'Yes' : 'No'"></span>
                   </td>
                   <td class="px-6 py-4">
-                    <div
-                      th:class="${v.tally} ? 'h-2.5 w-2.5 rounded-full bg-green-500 me-2' : 'h-2.5 w-2.5 rounded-full bg-gray-500 me-2'"
-                    ></div>
-                    <span th:text="${v.tally} ? 'Yes' : 'No'">No</span>
+                    <span th:text="${v.agreedForDemo} ? 'Yes' : 'No'"></span>
                   </td>
-                  <td class="px-6 py-4" th:text="${v.lastUpgrade ?: 'N/A'}">
-                    Last Upgrade
-                  </td>
-                  <td class="px-6 py-4" th:text="${v.opportunity ?: 'N/A'}">
-                    Opportunity
-                  </td>
+                  <td class="px-6 py-4" th:text="${v.dateFilled ?: 'N/A'}"></td>
+                  <td
+                    class="px-6 py-4"
+                    th:text="${v.employee?.name ?: 'N/A'}"
+                  ></td>
                   <td class="px-6 py-4">
-                    <div
-                      th:class="${v.revisitRequired} ? 'h-2.5 w-2.5 rounded-full bg-green-500 me-2' : 'h-2.5 w-2.5 rounded-full bg-gray-500 me-2'"
-                    ></div>
-                    <span th:text="${v.revisitRequired} ? 'Yes' : 'No'"
-                      >No</span
+                    <a
+                      th:href="@{'/user/visit/view/' + ${v.id}}"
+                      class="text-yellow-500 hover:underline"
+                      >Edit</a
                     >
-                  </td>
-                  <td class="px-6 py-4">
-                    <div
-                      th:class="${v.agreedForDemo} ? 'h-2.5 w-2.5 rounded-full bg-green-500 me-2' : 'h-2.5 w-2.5 rounded-full bg-gray-500 me-2'"
-                    ></div>
-                    <span th:text="${v.agreedForDemo} ? 'Yes' : 'No'">No</span>
-                  </td>
-                  <td class="px-6 py-4" th:text="${v.dateFilled ?: 'N/A'}">
-                    Date Filled
-                  </td>
-                  <td class="px-6 py-4" th:text="${v.employee?.name ?: 'N/A'}">
-                    Employee
-                  </td>
-                  <td class="px-6 py-4">
-                    <div class="flex gap-4">
-                      <a
-                        th:href="@{'/user/visit/view/' + ${v.id}}"
-                        class="font-medium text-yellow-500 hover:underline"
-                        title="Edit Visit Record"
-                      >
-                        Edit
-                      </a>
-                      <a
-                        th:href="@{'/user/visit/delete/' + ${v.id}}"
-                        class="font-medium text-red-500 hover:underline"
-                        title="Delete Visit Record"
-                      >
-                        Delete
-                      </a>
-                    </div>
+                    <a
+                      th:href="@{'/user/visit/delete/' + ${v.id}}"
+                      class="text-red-500 hover:underline"
+                      >Delete</a
+                    >
                   </td>
                 </tr>
                 <tr th:if="${#lists.isEmpty(pageVisitRecord.content)}">
                   <td colspan="17" class="px-6 py-8 text-center text-gray-500">
-                    <div class="flex flex-col items-center">
-                      <svg
-                        class="w-12 h-12 mb-4 text-gray-300"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                        ></path>
-                      </svg>
-                      <p class="text-lg font-medium">No visit records found</p>
-                      <p class="text-sm">
-                        Start by adding your first visit record!
-                      </p>
-                      <a
-                        th:href="@{/user/visit/add}"
-                        class="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-                      >
-                        Add Visit Record
-                      </a>
-                    </div>
+                    No results found.
                   </td>
                 </tr>
               </tbody>
             </table>
 
-            <!-- Pagination -->
+            <!-- Pagination with search params -->
             <nav aria-label="Page navigation example" class="pt-10 pb-5">
               <ul class="inline-flex -space-x-px text-base h-10">
                 <li th:unless="${pageVisitRecord.first}">
@@ -281,16 +247,11 @@
 
       <!-- Scripts -->
       <script src="https://cdn.jsdelivr.net/npm/@linways/table-to-excel@1.0.4/dist/tableToExcel.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-      <script th:src="@{'/js/Visits.js'}"></script>
       <script>
-        console.log("Visit records page script loaded");
         function exportData() {
           TableToExcel.convert(document.getElementById("visit_table"), {
             name: "visit_records.xlsx",
-            sheet: {
-              name: "Sheet 1",
-            },
+            sheet: { name: "Sheet 1" },
           });
         }
       </script>

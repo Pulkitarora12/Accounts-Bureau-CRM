@@ -59,12 +59,14 @@ public class Employee implements UserDetails {
     @Column(length = 100)
     private String department;
 
-    private boolean enabled = true; 
-    private boolean emailVerified = true;
+    private boolean enabled = false; 
+    private boolean emailVerified = false;
 
     @Enumerated(value=EnumType.STRING)
     private Providers provider = Providers.SELF;
     private String providerURL;
+
+    private String emailToken;
 
     // Changed from contacts to dailyReports
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)

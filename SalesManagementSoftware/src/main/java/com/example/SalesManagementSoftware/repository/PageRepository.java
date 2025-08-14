@@ -15,6 +15,6 @@ public interface PageRepository extends JpaRepository<Employee, Long> {
     
     Optional<Employee> findByEmailAndPassword(String email, String password);
 
-    // Optional<Employee> findByEmailToken(String token);
+    Optional<Employee> findByEmailToken(String token);
 }
 

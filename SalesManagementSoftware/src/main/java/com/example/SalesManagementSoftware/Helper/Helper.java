@@ -10,7 +10,7 @@ import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 
 public class Helper {
     
-     public static String getEmailOfLoggedInUser(Authentication authentication) {
+    public static String getEmailOfLoggedInUser(Authentication authentication) {
     Logger logger = LogManager.getLogger(Helper.class);
     
     if (authentication == null) {
@@ -43,7 +43,7 @@ public class Helper {
 
     public static String getLinkForEmailVerification(String emailToken) {
 
-        String link = "http://localhost:8080/auth/verify-email?token=" + emailToken;
+        String link = "http://localhost:8080/auth/verify-email?token="  + emailToken;
 
         return link;
     }
