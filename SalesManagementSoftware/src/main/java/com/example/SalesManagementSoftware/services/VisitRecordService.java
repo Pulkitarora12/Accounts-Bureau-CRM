@@ -48,4 +48,6 @@ public interface VisitRecordService {
     Page<VisitRecord> searchByOpportunity(String opportunity, int size, int page, String sortBy, String order, Employee employee);
 
     Page<VisitRecord> getByEmployee(Employee user, int page, int size, String sortBy, String direction);
+
+    public Page<VisitRecord> getAll(int page, int size, String sortBy, String direction);
 }

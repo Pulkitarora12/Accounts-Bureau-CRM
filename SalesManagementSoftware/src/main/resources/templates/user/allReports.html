@@ -4,7 +4,7 @@
   th:replace="~{base::parent(~{::#content}, ~{::title}, ~{::script})}"
 >
   <head>
-    <title th:text="${loggedInUser.name} + ' | Your Visit Records'">
+    <title th:text="${loggedInUser.name} + ' | All Employee Visit Records'">
       Visit Records Page
     </title>
   </head>
@@ -305,36 +305,6 @@
             },
           });
         }
-      </script>
-      <script>
-        function getCompaniesVisitedCountByDate(targetDate) {
-          const table = document.getElementById("visit_table");
-          const rows = table.querySelectorAll("tbody tr");
-          let totalCount = 0;
-
-          rows.forEach((row) => {
-            // Skip empty data row
-            if (row.querySelector("td[colspan]")) return;
-
-            const cells = row.querySelectorAll("td");
-            const dateFilled = cells[14]?.innerText.trim(); // 15th column (index 14)
-            const companiesVisited = parseInt(cells[2]?.innerText.trim()) || 0;
-            // ^ Adjust index according to your table structure
-
-            if (dateFilled === targetDate) {
-              totalCount += companiesVisited;
-            }
-          });
-
-          return totalCount;
-        }
-
-        // Example usage for today's date
-        const today = new Date().toISOString().split("T")[0]; // format: YYYY-MM-DD
-        console.log(
-          "Companies visited today:",
-          getCompaniesVisitedCountByDate(today)
-        );
       </script>
     </div>
   </body>

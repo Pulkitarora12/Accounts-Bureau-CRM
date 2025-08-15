@@ -156,5 +156,14 @@ public class VisitRecordServiceImpl implements VisitRecordService {
         return repo.findByEmployee(user, pageable); 
     }
 
+    @Override
+    public Page<VisitRecord> getAll(int page, int size, String sortBy, String direction) {
+        Sort sort = direction.equalsIgnoreCase("asc") ? Sort.by(sortBy).ascending()
+                                                  : Sort.by(sortBy).descending();
+        Pageable pageable = PageRequest.of(page, size, sort);
+        return repo.findAll(pageable);
+    }
+
+
 }
 

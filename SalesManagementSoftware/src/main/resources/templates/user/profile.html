@@ -12,19 +12,11 @@
   </head>
   <body>
     <div id="main-content">
-      <!-- Sidebar -->
-      <div class="col-md-3 sidebar">
-        <!-- Show admin sidebar if user is ADMIN, employee sidebar otherwise -->
-        <div
-          th:if="${loggedInUser != null and loggedInUser.role.name() == 'ADMIN'}"
-          th:replace="user/sidebar :: sidebar"
-        ></div>
-
-        <div
-          th:if="${loggedInUser != null and loggedInUser.role.name() != 'ADMIN'}"
-          th:replace="user/empSidebar :: sidebar"
-        ></div>
-      </div>
+      <!-- Admin Sidebar -->
+      <div
+        th:if="${loggedInUser != null}"
+        th:replace="user/sidebar :: sidebar"
+      ></div>
 
       <div
         id="profile-content"
@@ -79,6 +71,15 @@
                     class="font-medium"
                     th:text="${loggedInUser.about != null ? loggedInUser.about : 'N/A'}"
                     >About</span
+                  >
+                </p>
+
+                <p class="text-gray-600">
+                  <span class="font-medium">Role:</span>
+                  <span
+                    class="font-medium"
+                    th:text="${loggedInUser.role != null ? loggedInUser.role : 'N/A'}"
+                    >Role</span
                   >
                 </p>
 

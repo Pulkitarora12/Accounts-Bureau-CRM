@@ -25,6 +25,7 @@ import com.example.SalesManagementSoftware.forms.VisitRecordForm;
 import com.example.SalesManagementSoftware.services.UserService;
 import com.example.SalesManagementSoftware.services.VisitRecordService;
 
+import java.util.*;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
@@ -64,7 +65,9 @@ public class VisitReportController {
                              BindingResult result,
                              Authentication authentication,
                              HttpSession session,
-                             Model model) {
+                             Model model,
+                             @RequestParam(required = false) List<String> customLabels,
+                             @RequestParam(required = false) List<String> customValues) {
         if (result.hasErrors()) {
             result.getAllErrors().forEach(error -> System.out.println(error.toString()));
             model.addAttribute("form", form);
@@ -97,6 +100,12 @@ public class VisitReportController {
             record.setAgreedForDemo(form.isAgreedForDemo());
             record.setEmployee(user);
 
+            if (customLabels != null && customValues != null && customLabels.size() == customValues.size()) {
+                for (int i = 0; i < customLabels.size(); i++) {
+                    record.getCustomFields().put(customLabels.get(i), customValues.get(i));
+                }
+            }
+
             service.save(record);
             session.setAttribute("message", "You have successfully added a new visit record");
             return "redirect:/user/visit/add"; // Redirect to avoid form resubmission
@@ -107,6 +116,7 @@ public class VisitReportController {
             return "user/addVisitRecord";
         }
     }
+
 
     @PreAuthorize("hasAnyRole('ADMIN','MANAGER')")
     @GetMapping("")
@@ -160,6 +170,28 @@ public class VisitReportController {
             pageVisitRecord = service.searchByCompanyName(keyword, size, page, sortBy, direction, user);
         } else if (field.equalsIgnoreCase("contactPersonName")) {
             pageVisitRecord = service.searchByContactPersonName(keyword, size, page, sortBy, direction, user);
+        } else if (field.equalsIgnoreCase("placeOfVisit")) {
+            pageVisitRecord = service.searchByPlaceOfVisit(keyword, size, page, sortBy, direction, user);
+        } else if (field.equalsIgnoreCase("newOrRevisit")) {
+            pageVisitRecord = service.searchByNewOrRevisit(keyword, size, page, sortBy, direction, user);
+        } else if (field.equalsIgnoreCase("contactNumber")) {
+            pageVisitRecord = service.searchByContactPersonNumber(keyword, size, page, sortBy, direction, user);
+        } else if (field.equalsIgnoreCase("natureOfBusiness")) {
+            pageVisitRecord = service.searchByNatureOfBusiness(keyword, size, page, sortBy, direction, user);
+        } else if (field.equalsIgnoreCase("computer")) {  
+            boolean input = keyword.equals("true") ? true : false;
+            pageVisitRecord = service.searchByComputer(input, size, page, sortBy, direction, user);
+        } else if (field.equalsIgnoreCase("tally")) {
+            boolean input = keyword.equals("true") ? true : false;
+            pageVisitRecord = service.searchByTally(input, size, page, sortBy, direction, user);
+        } else if (field.equalsIgnoreCase("opportunity")) {
+            pageVisitRecord = service.searchByOpportunity(keyword, size, page, sortBy, direction, user);
+        } else if (field.equalsIgnoreCase("revisitRequired")) {
+            boolean input = keyword.equals("true") ? true : false;
+            pageVisitRecord = service.searchByRevisitRequired(input, size, page, sortBy, direction, user);
+        } else if (field.equalsIgnoreCase("agreedForDemo")) {
+            boolean input = keyword.equals("true") ? true : false;
+            pageVisitRecord = service.searchByAgreedForDemo(input, size, page, sortBy, direction, user);
         }
         
         model.addAttribute("pageVisitRecord", pageVisitRecord);
@@ -251,6 +283,37 @@ public class VisitReportController {
         service.save(record);
 
         return deleteVisitRecord(id);
+    }
+
+    @GetMapping("/dailyReports")
+    public String dailyReport(Authentication authentication, HttpSession session,
+                            Model model) {
+
+        String email = Helper.getEmailOfLoggedInUser(authentication);
+        Employee emp = userService.getUserByEmail(email);
+
+        
+        
+        
+        return "user/dailyReports";
+    }
+
+    @GetMapping("/allReports")
+    public String allReports(
+            Model model,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "" + AppConstants.PAGE_SIZE) int size,
+            @RequestParam(defaultValue = "id") String sortBy,
+            @RequestParam(defaultValue = "asc") String direction
+    ) {
+        // 1. Fetch all visit records with pagination
+        Page<VisitRecord> pageVisitRecord = service.getAll(page, size, sortBy, direction);
+
+        // 2. Add to model
+        model.addAttribute("pageVisitRecord", pageVisitRecord);
+        model.addAttribute("pageSize", size);
+
+        return "user/allReports"; // Thymeleaf template for all reports
     }
 
 

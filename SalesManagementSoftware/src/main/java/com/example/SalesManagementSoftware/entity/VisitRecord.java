@@ -1,6 +1,8 @@
 package com.example.SalesManagementSoftware.entity;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -55,4 +57,10 @@ public class VisitRecord {
 
     @ManyToOne
     private Employee employee;
+
+    @ElementCollection
+    @CollectionTable(name = "visit_record_custom_fields", joinColumns = @JoinColumn(name = "visit_record_id"))
+    @MapKeyColumn(name = "field_label")
+    @Column(name = "field_value")
+    private Map<String, String> customFields = new HashMap<>();
 }

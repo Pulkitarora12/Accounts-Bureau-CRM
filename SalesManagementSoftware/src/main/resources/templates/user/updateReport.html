@@ -10,19 +10,11 @@
   </head>
   <body>
     <div id="content">
-      <!--sidebar-->
-      <div class="col-md-3 sidebar">
-        <!-- Show admin sidebar if user is ADMIN, employee sidebar otherwise -->
-        <div
-          th:if="${loggedInUser != null and loggedInUser.role.name() == 'ADMIN'}"
-          th:replace="user/sidebar :: sidebar"
-        ></div>
-
-        <div
-          th:if="${loggedInUser != null and loggedInUser.role.name() != 'ADMIN'}"
-          th:replace="user/empSidebar :: sidebar"
-        ></div>
-      </div>
+      <!-- Admin Sidebar -->
+      <div
+        th:if="${loggedInUser != null}"
+        th:replace="user/sidebar :: sidebar"
+      ></div>
 
       <div class="flex justify-center items-center min-h-screen p-4">
         <div class="w-full max-w-lg p-2">
