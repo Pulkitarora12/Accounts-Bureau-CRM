@@ -29,7 +29,13 @@ public class UserController {
         String email = Helper.getEmailOfLoggedInUser(authentication);
         Employee user = userService.getUserByEmail(email);
 
-        model.addAttribute("loggedInUser", user);
+        if (user != null) {
+            model.addAttribute("loggedInUser", user);
+        } else {
+            // Handle null case, e.g., redirect to login
+            return "redirect:/login";
+        }
+        
         return "user/profile";
     }
 }

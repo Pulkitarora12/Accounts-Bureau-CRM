@@ -4,31 +4,31 @@
   th:replace="~{base::parent(~{::#content}, ~{::title}, ~{::script})}"
 >
   <head>
-    <title th:text="${loggedInUser.name} + ' | All Employee Visit Records'">
+    <title th:text="${loggedInUser.name} + ' | Daily Visit Record'">
       Visit Records Page
     </title>
   </head>
   <body>
     <div id="content">
-      <!-- Admin Sidebar -->
-      <div
-        th:if="${loggedInUser != null}"
-        th:replace="user/sidebar :: sidebar"
-      ></div>
+      <div th:if="${loggedInUser != null and loggedInUser.isEmployee()}">
+        <div th:replace="~{user/empSidebar :: empSidebar}"></div>
+      </div>
+
+      <div th:if="${loggedInUser != null and !loggedInUser.isEmployee()}">
+        <div th:replace="~{user/sidebar :: sidebar}"></div>
+      </div>
 
       <div class="pl-66 pt-5 flex flex-col text-center">
-        <h1 class="text-amber-50 text-5xl">All Your Visit Records</h1>
-        <p class="text-amber-50">List of your visit records</p>
+        <h1 class="text-amber-50 text-5xl">Daily Visit Records</h1>
 
         <div class="visits_container p-5">
           <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <!-- Search Form -->
             <div class="flex justify-center">
-              <form th:action="@{'/user/visit/search'}">
+              <!-- <form th:action="@{'/user/visit/search'}">
                 <div
                   class="flex items-center justify-start gap-2 flex-wrap md:flex-nowrap pb-4 bg-white dark:bg-gray-900"
                 >
-                  <!-- Dropdown -->
                   <div>
                     <select
                       name="field"
@@ -51,10 +51,9 @@
                       <option value="revisitRequired">Revisit Required</option>
                       <option value="agreedForDemo">Agreed for Demo</option>
                     </select>
-                  </div>
+                  </div> -->
 
-                  <!-- Search Input -->
-                  <div class="relative">
+              <!-- <div class="relative">
                     <div
                       class="absolute inset-y-0 left-0 flex items-center ps-3 pointer-events-none"
                     >
@@ -81,7 +80,6 @@
                     />
                   </div>
 
-                  <!-- Search Button -->
                   <div>
                     <button
                       type="submit"
@@ -91,18 +89,18 @@
                     </button>
                   </div>
 
-                  <!-- Export Button -->
-                  <div>
-                    <button
-                      type="button"
-                      onclick="exportData()"
-                      class="flex items-center px-2 py-1.5 rounded-lg bg-blue-700"
-                    >
-                      Export
-                    </button>
-                  </div>
+                  
                 </div>
-              </form>
+              </form> -->
+              <div>
+                <button
+                  type="button"
+                  onclick="exportData()"
+                  class="flex items-center px-2 py-1.5 rounded-lg bg-blue-700 mb-5"
+                >
+                  Export
+                </button>
+              </div>
             </div>
 
             <table
@@ -113,68 +111,50 @@
                 class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
               >
                 <tr>
-                  <th scope="col" class="px-6 py-3">Date</th>
-                  <th scope="col" class="px-6 py-3">Scout Name</th>
+                  <th scope="col" class="px-6 py-3">Scount Name</th>
+                  <th scope="col" class="px-6 py-3">No. Of Companies Visits</th>
                   <th scope="col" class="px-6 py-3">
-                    No. of Companies Visited
+                    No. of Companies with Tally
                   </th>
-                  <th scope="col" class="px-6 py-3">
-                    No. of Companies using Tally
-                  </th>
-                  <th scope="col" class="px-6 py-3">New/Revisit</th>
-                  <th scope="col" class="px-6 py-3">
-                    Prospect For New License
-                  </th>
+                  <th scope="col" class="px-6 py-3">No. of Agreed for demo</th>
                   <th scope="col" class="px-6 py-3">Other Opportunities</th>
-                  <th scope="col" class="px-6 py-3">No. of Demo Agreed</th>
+                  <th scope="col" class="px-6 py-3">
+                    Prospect for New License
+                  </th>
+                  <th scope="col" class="px-6 py-3">Date Filled</th>
                 </tr>
               </thead>
               <tbody>
-                <tr
-                  th:each="v : ${pageVisitRecord.content}"
-                  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
-                >
-                  <!-- Date -->
-                  <td
-                    class="px-6 py-4"
-                    th:text="${#dates.format(#dates.createNow(), 'dd-MM-yyyy')}"
-                  ></td>
-
-                  <!-- Scout Name -->
-                  <td class="px-6 py-4" th:text="${v.scoutName}"></td>
-
-                  <!-- No. of Companies Visited -->
-                  <td
-                    class="px-6 py-4"
-                    th:text="${v.noOfCompaniesVisited}"
-                  ></td>
-
-                  <!-- No. of Companies using Tally -->
-                  <td
-                    class="px-6 py-4"
-                    th:text="${v.noOfCompaniesUsingTally}"
-                  ></td>
-
-                  <!-- New/Revisit -->
-                  <td class="px-6 py-4" th:text="${v.newOrRevisit}"></td>
-
-                  <!-- Prospect for New License -->
-                  <td
-                    class="px-6 py-4"
-                    th:text="${v.prospectForNewLicense}"
-                  ></td>
-
-                  <!-- Other Opportunities -->
-                  <td class="px-6 py-4" th:text="${v.otherOpportunities}"></td>
-
-                  <!-- No. of Demo Agreed -->
-                  <td class="px-6 py-4" th:text="${v.noOfDemoAgreed}"></td>
+                <tr>
+                  <th
+                    scope="col"
+                    class="px-6 py-3"
+                    th:text="${loggedInUser.name}"
+                  ></th>
+                  <th scope="col" class="px-6 py-3" th:text="${counts}"></th>
+                  <th scope="col" class="px-6 py-3" th:text="${tally}"></th>
+                  <th scope="col" class="px-6 py-3" th:text="${demo}"></th>
+                  <th
+                    scope="col"
+                    class="px-6 py-3"
+                    th:text="${loggedInUser.name}"
+                  ></th>
+                  <th
+                    scope="col"
+                    class="px-6 py-3"
+                    th:text="${newLicense}"
+                  ></th>
+                  <th
+                    scope="col"
+                    class="px-6 py-3"
+                    th:text="${selectedDate}"
+                  ></th>
                 </tr>
               </tbody>
             </table>
 
             <!-- Pagination -->
-            <nav aria-label="Page navigation example" class="pt-10 pb-5">
+            <!-- <nav aria-label="Page navigation example" class="pt-10 pb-5">
               <ul class="inline-flex -space-x-px text-base h-10">
                 <li th:unless="${pageVisitRecord.first}">
                   <a
@@ -201,7 +181,7 @@
                   >
                 </li>
               </ul>
-            </nav>
+            </nav> -->
           </div>
         </div>
       </div>
@@ -220,6 +200,36 @@
             },
           });
         }
+      </script>
+      <script>
+        function getCompaniesVisitedCountByDate(targetDate) {
+          const table = document.getElementById("visit_table");
+          const rows = table.querySelectorAll("tbody tr");
+          let totalCount = 0;
+
+          rows.forEach((row) => {
+            // Skip empty data row
+            if (row.querySelector("td[colspan]")) return;
+
+            const cells = row.querySelectorAll("td");
+            const dateFilled = cells[14]?.innerText.trim(); // 15th column (index 14)
+            const companiesVisited = parseInt(cells[2]?.innerText.trim()) || 0;
+            // ^ Adjust index according to your table structure
+
+            if (dateFilled === targetDate) {
+              totalCount += companiesVisited;
+            }
+          });
+
+          return totalCount;
+        }
+
+        // Example usage for today's date
+        const today = new Date().toISOString().split("T")[0]; // format: YYYY-MM-DD
+        console.log(
+          "Companies visited today:",
+          getCompaniesVisitedCountByDate(today)
+        );
       </script>
     </div>
   </body>

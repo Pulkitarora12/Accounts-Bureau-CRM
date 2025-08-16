@@ -10,11 +10,14 @@
   </head>
   <body>
     <div id="content">
-      <!-- Admin Sidebar -->
-      <div
-        th:if="${loggedInUser != null}"
-        th:replace="user/sidebar :: sidebar"
-      ></div>
+      
+      <div th:if="${loggedInUser != null and loggedInUser.isEmployee()}">
+        <div th:replace="~{user/empSidebar :: empSidebar}"></div>
+      </div>
+
+      <div th:if="${loggedInUser != null and !loggedInUser.isEmployee()}">
+        <div th:replace="~{user/sidebar :: sidebar}"></div>
+      </div>
 
       <div class="flex justify-center items-center min-h-screen p-4">
         <div class="w-full max-w-lg p-2">
@@ -280,6 +283,20 @@
                     </select>
                   </div>
 
+                  <!-- Dynamic Custom Fields -->
+                  <div id="customFieldsContainer" class="mb-3"></div>
+
+                  <!-- Add Field Button -->
+                  <div class="mb-3">
+                    <button
+                      type="button"
+                      class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg"
+                      onclick="addCustomField()"
+                    >
+                      + Add Custom Field
+                    </button>
+                  </div>
+
                   <div class="button-container text-center mt-5">
                     <button class="bg-green-700 hover:bg-green-800 text-white px-6 py-3 rounded-lg font-medium" type="submit">
                       Update Visit Record
@@ -294,6 +311,35 @@
     <script th:src="@{'/js/admin.js'}"></script>
     <script>
       console.log("Add visit record page script loaded");
+    </script>
+    <script>
+      let fieldCount = 0;
+
+      function addCustomField() {
+          fieldCount++;
+          const container = document.getElementById("customFieldsContainer");
+
+          const fieldDiv = document.createElement("div");
+          fieldDiv.classList.add("mb-3", "border", "p-3", "rounded-lg", "bg-gray-100");
+          fieldDiv.setAttribute("data-field-id", fieldCount);
+
+          fieldDiv.innerHTML = `
+              <label class="block mb-2 text-sm font-medium text-gray-900">Custom Field Label</label>
+              <input type="text" name="customLabels[]" placeholder="Enter field label" class="mb-2 bg-gray-50 border border-gray-300 rounded-lg p-2.5 w-full"/>
+
+              <label class="block mb-2 text-sm font-medium text-gray-900">Custom Field Value</label>
+              <input type="text" name="customValues[]" placeholder="Enter field value" class="mb-2 bg-gray-50 border border-gray-300 rounded-lg p-2.5 w-full"/>
+
+              <button type="button" class="bg-red-500 text-white px-2 py-1 rounded" onclick="removeCustomField(${fieldCount})">Remove</button>
+          `;
+
+          container.appendChild(fieldDiv);
+      }
+
+      function removeCustomField(id) {
+          const fieldDiv = document.querySelector(`[data-field-id='${id}']`);
+          if (fieldDiv) fieldDiv.remove();
+      }
     </script>
   </body>
 </html>

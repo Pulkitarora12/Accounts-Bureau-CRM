@@ -6,12 +6,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class DailyRecord {
 
     @Id
@@ -20,13 +24,15 @@ public class DailyRecord {
 
     private String scoutName;
 
-    private int noOfCompaniesVisited;
+    private Long noOfCompaniesVisited;
 
-    private int noOfCompaniesUsingTally;
+    private Long noOfCompaniesUsingTally;
    
-    private int noOfDemoAgreed;
+    private Long noOfDemoAgreed;
    
-    private int otherOpportunities;
+    private Long otherOpportunities;
+
+    private Long prospectForNewLicense;
 
     private LocalDate dateFilled; // use LocalDate for easy filtering
 }

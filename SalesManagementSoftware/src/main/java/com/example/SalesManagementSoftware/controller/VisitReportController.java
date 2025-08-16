@@ -1,5 +1,7 @@
 package com.example.SalesManagementSoftware.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +27,6 @@ import com.example.SalesManagementSoftware.forms.VisitRecordForm;
 import com.example.SalesManagementSoftware.services.UserService;
 import com.example.SalesManagementSoftware.services.VisitRecordService;
 
-import java.util.*;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
@@ -46,7 +47,12 @@ public class VisitReportController {
         String email = Helper.getEmailOfLoggedInUser(authentication);
         Employee user = userService.getUserByEmail(email);
 
-        model.addAttribute("loggedInUser", user);
+        if (user != null) {
+            model.addAttribute("loggedInUser", user);
+        } else {
+            // Handle null case, e.g., redirect to login
+            return "redirect:/login";
+        }
         
         VisitRecordForm form = new VisitRecordForm();
         form.setScoutName(user.getName());
@@ -117,8 +123,6 @@ public class VisitReportController {
         }
     }
 
-
-    @PreAuthorize("hasAnyRole('ADMIN','MANAGER')")
     @GetMapping("")
     public String viewReports(
             Model model,
@@ -132,7 +136,12 @@ public class VisitReportController {
         String email = Helper.getEmailOfLoggedInUser(authentication);
         Employee user = userService.getUserByEmail(email);
         
-        model.addAttribute("loggedInUser", user);
+        if (user != null) {
+            model.addAttribute("loggedInUser", user);
+        } else {
+            // Handle null case, e.g., redirect to login
+            return "redirect:/login";
+        }
 
         // 2. Fetch paginated visit records for this user
         Page<VisitRecord> pageVisitRecord =
@@ -163,6 +172,13 @@ public class VisitReportController {
         Page<VisitRecord> pageVisitRecord = null;
 
         var user = userService.getUserByEmail(Helper.getEmailOfLoggedInUser(authentication));
+
+        if (user != null) {
+            model.addAttribute("loggedInUser", user);
+        } else {
+            // Handle null case, e.g., redirect to login
+            return "redirect:/login";
+        }
 
         if (field.equalsIgnoreCase("scoutName")) {
             pageVisitRecord = service.searchByScoutName(keyword, size, page, sortBy, direction, user);
@@ -203,7 +219,6 @@ public class VisitReportController {
         return "user/search";
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/delete/{id}")
     public String deleteVisitRecord(@PathVariable Long id) {
         service.delete(id);
@@ -250,21 +265,27 @@ public class VisitReportController {
         if (result.hasErrors()) {
             result.getAllErrors().forEach(error -> {
                 logger.error("Validation error: {}", error.toString());
-                if (error instanceof FieldError) {
-                    FieldError fieldError = (FieldError) error;
+                if (error instanceof FieldError fieldError) {
                     logger.error("Field: {}, Message: {}", fieldError.getField(), fieldError.getDefaultMessage());
                 }
             });
             model.addAttribute("form", form);
             model.addAttribute("message", "Please resolve the errors");
-            return "user/addVisitRecord";
+            return "user/updateVisitRecord";  // better than "addVisitRecord"
         }
 
         String email = Helper.getEmailOfLoggedInUser(authentication);
         Employee emp = userService.getUserByEmail(email);
 
-        VisitRecord record = new VisitRecord();
+        if (emp != null) {
+            model.addAttribute("loggedInUser", emp);
+        } else {
+            // Handle null case, e.g., redirect to login
+            return "redirect:/login";
+        }
 
+        VisitRecord record = new VisitRecord();
+        record.setId(id);  // important so JPA treats it as update
         record.setCompanyName(form.getCompanyName());
         record.setScoutName(form.getScoutName());
         record.setPlaceOfVisit(form.getPlaceOfVisit());
@@ -280,22 +301,9 @@ public class VisitReportController {
         record.setAgreedForDemo(form.isAgreedForDemo());
         record.setEmployee(emp);
 
-        service.save(record);
+        service.update(record);
 
-        return deleteVisitRecord(id);
-    }
-
-    @GetMapping("/dailyReports")
-    public String dailyReport(Authentication authentication, HttpSession session,
-                            Model model) {
-
-        String email = Helper.getEmailOfLoggedInUser(authentication);
-        Employee emp = userService.getUserByEmail(email);
-
-        
-        
-        
-        return "user/dailyReports";
+        return "user/reports";
     }
 
     @GetMapping("/allReports")
@@ -315,6 +323,11 @@ public class VisitReportController {
 
         return "user/allReports"; // Thymeleaf template for all reports
     }
+
+    // @GetMapping("/dailyReports")
+    // public String dailyReports() {
+    //     return "user/dailyReports";
+    // }
 
 
 }

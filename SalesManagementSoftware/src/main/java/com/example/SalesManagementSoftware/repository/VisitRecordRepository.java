@@ -1,6 +1,7 @@
 package com.example.SalesManagementSoftware.repository;
 
-import java.util.*;
+import java.util.Date;
+import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

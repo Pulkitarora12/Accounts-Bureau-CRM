@@ -1,6 +1,10 @@
 package com.example.SalesManagementSoftware.services.impl;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +16,7 @@ import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.stereotype.Service;
 
 import com.example.SalesManagementSoftware.Helper.ResourceNotFoundException;
+import com.example.SalesManagementSoftware.entity.DailyRecord;
 import com.example.SalesManagementSoftware.entity.Employee;
 import com.example.SalesManagementSoftware.entity.VisitRecord;
 import com.example.SalesManagementSoftware.repository.VisitRecordRepository;
@@ -25,12 +30,32 @@ public class VisitRecordServiceImpl implements VisitRecordService {
 
     @Override
     public VisitRecord save(VisitRecord visitRecord) {
+
         return repo.save(visitRecord);
     }
 
     @Override
     public VisitRecord update(VisitRecord visitRecord) {
-        return new VisitRecord();
+        VisitRecord existing = repo.findById(visitRecord.getId())
+            .orElseThrow(() -> new RuntimeException("VisitRecord not found with id " + visitRecord.getId()));
+
+        // copy updated fields
+        existing.setCompanyName(visitRecord.getCompanyName());
+        existing.setScoutName(visitRecord.getScoutName());
+        existing.setPlaceOfVisit(visitRecord.getPlaceOfVisit());
+        existing.setNewOrRevisit(visitRecord.getNewOrRevisit());
+        existing.setContactPersonName(visitRecord.getContactPersonName());
+        existing.setContactNumber(visitRecord.getContactNumber());
+        existing.setNatureOfBusiness(visitRecord.getNatureOfBusiness());
+        existing.setComputer(visitRecord.getComputer());
+        existing.setTally(visitRecord.getTally());
+        existing.setLastUpgrade(visitRecord.getLastUpgrade());
+        existing.setOpportunity(visitRecord.getOpportunity());
+        existing.setRevisitRequired(visitRecord.getRevisitRequired());
+        existing.setAgreedForDemo(visitRecord.getAgreedForDemo());
+        existing.setEmployee(visitRecord.getEmployee());
+
+        return repo.save(existing);
     }
 
     @Override
@@ -163,7 +188,5 @@ public class VisitRecordServiceImpl implements VisitRecordService {
         Pageable pageable = PageRequest.of(page, size, sort);
         return repo.findAll(pageable);
     }
-
-
 }
 

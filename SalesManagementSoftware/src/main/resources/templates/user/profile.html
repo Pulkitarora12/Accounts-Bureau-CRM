@@ -5,18 +5,21 @@
 >
   <head>
     <title
-      th:text="${loggedInUser != null ? loggedInUser.name + ' | SMS' : 'Profile Page'}"
+      th:text="${loggedInUser != null ? loggedInUser.name + ' | CRM' : 'Profile Page'}"
     >
       Profile Page
     </title>
   </head>
   <body>
     <div id="main-content">
-      <!-- Admin Sidebar -->
-      <div
-        th:if="${loggedInUser != null}"
-        th:replace="user/sidebar :: sidebar"
-      ></div>
+
+      <div th:if="${loggedInUser != null and loggedInUser.isEmployee()}">
+        <div th:replace="~{user/empSidebar :: empSidebar}"></div>
+      </div>
+
+      <div th:if="${loggedInUser != null and !loggedInUser.isEmployee()}">
+        <div th:replace="~{user/sidebar :: sidebar}"></div>
+      </div>
 
       <div
         id="profile-content"

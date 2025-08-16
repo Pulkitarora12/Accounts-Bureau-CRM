@@ -43,6 +43,8 @@ public class VisitRecord {
     private String opportunity; 
     // e.g. None/New license/Upgrade/TSS/Service/Customization
 
+    private String otherOpportunities;
+
     private Boolean revisitRequired;
 
     private Boolean agreedForDemo;

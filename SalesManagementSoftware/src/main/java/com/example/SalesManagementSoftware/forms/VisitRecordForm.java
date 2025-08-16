@@ -54,6 +54,8 @@ public class VisitRecordForm {
     private String opportunity; 
     // e.g. None/New license/Upgrade/TSS/Service/Customization
 
+    private String otherOpportunites;
+
     private boolean revisitRequired;
     private boolean agreedForDemo;
     public void setId(Object object) {

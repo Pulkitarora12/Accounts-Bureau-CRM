@@ -3,6 +3,7 @@ package com.example.SalesManagementSoftware.services;
 import com.example.SalesManagementSoftware.entity.Employee;
 import com.example.SalesManagementSoftware.entity.VisitRecord;
 
+import java.time.LocalDate;
 import java.util.*;
 
 import org.springframework.data.domain.Page;
@@ -49,5 +50,5 @@ public interface VisitRecordService {
 
     Page<VisitRecord> getByEmployee(Employee user, int page, int size, String sortBy, String direction);
 
-    public Page<VisitRecord> getAll(int page, int size, String sortBy, String direction);
+    Page<VisitRecord> getAll(int page, int size, String sortBy, String direction);
 }
