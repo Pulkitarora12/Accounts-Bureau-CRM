@@ -19,12 +19,12 @@
     <!--handeling navbar-->
 
     <!--user logged in ?-->
-    <div th:if="${loggedInUser}">
+    <div th:if="${loggedInUser != null and loggedInUser.enabled}">
       <div th:replace="~{user/userNavbar :: user-navbar}"></div>
     </div>
 
-    <!--user not logged in-->
-    <div th:unless="${loggedInUser}">
+    <!-- Not logged in OR not verified -->
+    <div th:unless="${loggedInUser != null and loggedInUser.enabled}">
       <div th:replace="~{navbar :: navbar}"></div>
     </div>
 

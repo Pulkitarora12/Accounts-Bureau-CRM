@@ -125,30 +125,31 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th
-                    scope="col"
-                    class="px-6 py-3"
-                    th:text="${loggedInUser.name}"
-                  ></th>
-                  <th scope="col" class="px-6 py-3" th:text="${counts}"></th>
-                  <th scope="col" class="px-6 py-3" th:text="${tally}"></th>
-                  <th scope="col" class="px-6 py-3" th:text="${demo}"></th>
-                  <th
-                    scope="col"
-                    class="px-6 py-3"
-                    th:text="${loggedInUser.name}"
-                  ></th>
-                  <th
-                    scope="col"
-                    class="px-6 py-3"
-                    th:text="${newLicense}"
-                  ></th>
-                  <th
-                    scope="col"
-                    class="px-6 py-3"
-                    th:text="${selectedDate}"
-                  ></th>
+                <tr
+                  th:each="v : ${pageRecord.content}"
+                  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
+                >
+                  <td class="px-6 py-4" th:text="${v.scoutName.name}">
+                    Scout Name
+                  </td>
+                  <td class="px-6 py-4" th:text="${v.noOfCompaniesVisited}">
+                    No. Of Companies Visited
+                  </td>
+                  <td class="px-6 py-4" th:text="${v.noOfCompaniesUsingTally}">
+                    No. of companies using tally
+                  </td>
+                  <td class="px-6 py-4" th:text="${v.noOfDemoAgreed}">
+                    No. of agreed for demo
+                  </td>
+                  <td class="px-6 py-4" th:text="${v.otherOpportunities}">
+                    Other Opportunities
+                  </td>
+                  <td class="px-6 py-4" th:text="${v.prospectForNewLicense}">
+                    Prospect For New License
+                  </td>
+                  <td class="px-6 py-4" th:text="${v.dateFilled}">
+                    Date Filled
+                  </td>
                 </tr>
               </tbody>
             </table>

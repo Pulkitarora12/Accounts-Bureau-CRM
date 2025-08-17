@@ -5,6 +5,10 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.example.SalesManagementSoftware.Helper.Helper;
@@ -34,7 +38,7 @@ public class UserServiceImpl implements UserService {
             String emailLink = Helper.getLinkForEmailVerification(emailToken);
             user.setEmailToken(emailToken);
             emailService.sendEmail(
-                "pulkitpulkitarr@gmail.com", 
+                user.getEmail(), 
                 "Verify Account : Email Contact Manager", 
                 emailLink
             );
@@ -58,8 +62,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteUser(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteUser'");
+        Employee employee = repo.findById(id).orElse(null);
+
+        if (employee != null) {
+            repo.delete(employee);
+        }
     }
 
     @Override
@@ -89,6 +96,15 @@ public class UserServiceImpl implements UserService {
     public Employee getUserByEmailToken(String token) {
         
         return repo.findByEmailToken(token).orElse(null);
+    }
+
+
+    @Override
+    public Page<Employee> getAll(int page, int size, String sortBy, String direction) {
+        Sort sort = direction.equalsIgnoreCase("asc") ? Sort.by(sortBy).ascending()
+                                                  : Sort.by(sortBy).descending();
+        Pageable pageable = PageRequest.of(page, size, sort);
+        return repo.findAll(pageable);
     }
 
 }

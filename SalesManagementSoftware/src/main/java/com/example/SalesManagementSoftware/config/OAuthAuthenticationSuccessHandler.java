@@ -37,65 +37,63 @@ public class OAuthAuthenticationSuccessHandler implements AuthenticationSuccessH
             Authentication authentication) throws IOException, ServletException {
         logger.info("OAuthAuthenticationSuccessHandler");
 
-        // Get user details from OAuth2 - using OAuth2User interface instead
-        DefaultOAuth2User user  = (DefaultOAuth2User)authentication.getPrincipal();
-        
-        // logger.info(user.getName());
-        
-        // user.getAttributes().forEach((key, value) -> {
-        //     logger.info("{} : {}", key, value);
-        // });
+        // Get user details from OAuth2
+        DefaultOAuth2User user = (DefaultOAuth2User) authentication.getPrincipal();
 
-        // logger.info(user.getAuthorities().toString());
-
-        //identify the provider
-        var oauth = (OAuth2AuthenticationToken)authentication;
+        // Identify the provider
+        var oauth = (OAuth2AuthenticationToken) authentication;
         String clientId = oauth.getAuthorizedClientRegistrationId();
         
         logger.info(clientId);
 
-        Employee user1 = new Employee();
-        user1.setProviderURL(user.getName());
+        String email = null;
+        String name = null;
+        String picture = null;
 
         if ("google".equals(clientId)) {
-
-            String email = user.getAttribute("email").toString();
-            String name = user.getAttribute("name").toString();
-            String picture = user.getAttribute("picture").toString();
-
-            user1.setName(name);
-            user1.setEmail(email);
-            user1.setProfileLink(picture);
-            user1.setPassword("password");
-            user1.setProvider(Providers.GOOGLE);
-            user1.setProviderURL(user.getName());
-            user1.setAbout("This account was created using google");
-        } 
-        
-        //fetching data and saving to database
-        Employee user3 = repo.findByEmail(user1.getEmail()).orElse(null);
-
-        if (user3 == null) {
-            user1.setEnabled(false);
-            user1.setEmailVerified(false);
-            user1.setRole(Role.EMPLOYEE);
-            service.saveUser(user1, true);
-            logger.info("User saved .... " + user1.getEmail());
-        } else {
-            user1.setEnabled(true);
-            user1.setEmailVerified(true);
-            user1.setRole(user3.getRole());
-            logger.info("User already present" + user1.getEmail());
+            email = user.getAttribute("email").toString();
+            name = user.getAttribute("name").toString();
+            picture = user.getAttribute("picture").toString();
         }
 
-        if (!user1.isEnabled()) {
-            // Prevent login
+        // Check if user already exists
+        Employee existingUser = repo.findByEmail(email).orElse(null);
+
+        if (existingUser == null) {
+            // Create new user
+            Employee newUser = new Employee();
+            newUser.setName(name);
+            newUser.setEmail(email);
+            newUser.setProfileLink(picture);
+            newUser.setPassword("password");
+            newUser.setProvider(Providers.GOOGLE);
+            newUser.setProviderURL(user.getName());
+            newUser.setAbout("This account was created using google");
+            newUser.setEnabled(false); // Initially disabled until email verification
+            newUser.setEmailVerified(false);
+            newUser.setRole(Role.EMPLOYEE);
+            
+            service.saveUser(newUser, true);
+            logger.info("New user created: " + email);
+            
+            // Redirect to verification page since user is not enabled
             response.sendRedirect("/login?error=verification");
             return;
+        } else {
+            logger.info("Existing user logging in: " + email);
+            
+            // Check if existing user is enabled
+            if (!existingUser.isEnabled()) {
+                logger.info("User not enabled, redirecting to verification: " + email);
+                response.sendRedirect("/login?error=verification");
+                return;
+            }
+            
+            // User exists and is enabled - allow login
+            logger.info("User login successful: " + email);
         }
 
-        
+        // Redirect to profile if user is enabled
         response.sendRedirect("/user/profile");
     }
-    
 }

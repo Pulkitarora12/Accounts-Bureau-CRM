@@ -14,13 +14,13 @@
         <div th:replace="~{user/empSidebar :: empSidebar}"></div>
       </div>
 
-      <div th:if="${loggedInUser == null and !loggedInUser.isEmployee()}">
+      <div th:if="${loggedInUser != null and !loggedInUser.isEmployee()}">
         <div th:replace="~{user/sidebar :: sidebar}"></div>
       </div>
 
       <div class="pl-66 pt-5 flex flex-col text-center">
-        <h1 class="text-amber-50 text-5xl">All Your Visit Records</h1>
-        <p class="text-amber-50">List of your visit records</p>
+        <h1 class="text-amber-50 text-5xl">All Visit Records</h1>
+        <p class="text-amber-50">List of all visit records</p>
 
         <div class="visits_container p-5">
           <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -265,7 +265,7 @@
               <ul class="inline-flex -space-x-px text-base h-10">
                 <li th:unless="${pageVisitRecord.first}">
                   <a
-                    th:href="@{'/user/visit?size='+${pageSize} + '&page='+${pageVisitRecord.number-1}}"
+                    th:href="@{'/user/visit/allReports?size='+${pageSize} + '&page='+${pageVisitRecord.number-1}}"
                     class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                     >Previous</a
                   >
@@ -274,7 +274,7 @@
                   th:each="i : ${#numbers.sequence(0, pageVisitRecord.totalPages - 1)}"
                 >
                   <a
-                    th:href="@{'/user/visit?size='+${pageSize} + '&page='+${i}}"
+                    th:href="@{'/user/visit/allReports?size='+${pageSize} + '&page='+${i}}"
                     th:text="${i + 1}"
                     th:classappend="${i == pageVisitRecord.number} ? 'text-2xl font-bold border border-gray-600' : 'bg-gray-100'"
                     class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"

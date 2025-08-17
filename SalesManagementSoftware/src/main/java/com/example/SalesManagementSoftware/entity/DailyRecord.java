@@ -1,11 +1,13 @@
 package com.example.SalesManagementSoftware.entity;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,8 +24,6 @@ public class DailyRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String scoutName;
-
     private Long noOfCompaniesVisited;
 
     private Long noOfCompaniesUsingTally;
@@ -34,5 +34,9 @@ public class DailyRecord {
 
     private Long prospectForNewLicense;
 
-    private LocalDate dateFilled; // use LocalDate for easy filtering
+    private LocalDate dateFilled;
+
+    @ManyToOne
+    private Employee scoutName;
+
 }

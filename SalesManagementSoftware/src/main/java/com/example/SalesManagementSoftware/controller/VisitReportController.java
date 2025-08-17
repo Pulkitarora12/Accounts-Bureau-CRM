@@ -53,6 +53,10 @@ public class VisitReportController {
             // Handle null case, e.g., redirect to login
             return "redirect:/login";
         }
+
+        if (!user.isEnabled()) {
+            return "login";
+        }
         
         VisitRecordForm form = new VisitRecordForm();
         form.setScoutName(user.getName());
@@ -84,10 +88,15 @@ public class VisitReportController {
         try {
             String email = Helper.getEmailOfLoggedInUser(authentication);
             Employee user = userService.getUserByEmail(email);
+
             if (user == null) {
                 model.addAttribute("form", form);
                 model.addAttribute("message", "User not found. Please log in again.");
                 return "user/addVisitRecord";
+            }
+
+            if (!user.isEnabled()) {
+                return "login";
             }
 
             VisitRecord record = new VisitRecord();
@@ -141,6 +150,10 @@ public class VisitReportController {
         } else {
             // Handle null case, e.g., redirect to login
             return "redirect:/login";
+        }
+
+        if (!user.isEnabled()) {
+            return "login";
         }
 
         // 2. Fetch paginated visit records for this user
@@ -282,6 +295,10 @@ public class VisitReportController {
         } else {
             // Handle null case, e.g., redirect to login
             return "redirect:/login";
+        }
+
+        if (!emp.isEnabled()) {
+            return "login";
         }
 
         VisitRecord record = new VisitRecord();

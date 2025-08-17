@@ -29,14 +29,12 @@ public class PageController {
 
     @GetMapping("/")
     public String redirectHome() {
-        return "home";
+        return "login";
     }
 
     @GetMapping("/home")
     public String home(Model model) {
-        model.addAttribute("name", "Pulkit Arora");
-        model.addAttribute("Github", "https://github.com/Pulkitarora12/Smart-Contact-Manager");
-        return "home"; // This will render home.html from templates
+        return "login";
     }
 
     @GetMapping("/login")
@@ -125,7 +123,13 @@ public class PageController {
     public Employee getLoggedInUser(Authentication authentication) {
         if (authentication != null && authentication.isAuthenticated() && 
             authentication.getPrincipal() instanceof Employee) {
-            return (Employee) authentication.getPrincipal();
+            Employee loggedInUser = (Employee) authentication.getPrincipal();
+
+            if (!loggedInUser.isEnabled()) {
+                return null;
+            }
+
+            return loggedInUser;
         }
         return null;
     }
