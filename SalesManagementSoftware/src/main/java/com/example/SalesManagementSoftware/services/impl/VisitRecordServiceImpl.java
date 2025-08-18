@@ -1,10 +1,6 @@
 package com.example.SalesManagementSoftware.services.impl;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +8,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.stereotype.Service;
 
 import com.example.SalesManagementSoftware.Helper.ResourceNotFoundException;
-import com.example.SalesManagementSoftware.entity.DailyRecord;
 import com.example.SalesManagementSoftware.entity.Employee;
 import com.example.SalesManagementSoftware.entity.VisitRecord;
 import com.example.SalesManagementSoftware.repository.VisitRecordRepository;
@@ -54,6 +48,7 @@ public class VisitRecordServiceImpl implements VisitRecordService {
         existing.setRevisitRequired(visitRecord.getRevisitRequired());
         existing.setAgreedForDemo(visitRecord.getAgreedForDemo());
         existing.setEmployee(visitRecord.getEmployee());
+        existing.setOtherOpportunities(visitRecord.getOtherOpportunities());
 
         return repo.save(existing);
     }

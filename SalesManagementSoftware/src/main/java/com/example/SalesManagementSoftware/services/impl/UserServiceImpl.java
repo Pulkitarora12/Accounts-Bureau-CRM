@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
             String emailLink = Helper.getLinkForEmailVerification(emailToken);
             user.setEmailToken(emailToken);
             emailService.sendEmail(
-                user.getEmail(), 
+                "pulkitpulkitarr@gmail.com", 
                 "Verify Account : Email Contact Manager", 
                 emailLink
             );

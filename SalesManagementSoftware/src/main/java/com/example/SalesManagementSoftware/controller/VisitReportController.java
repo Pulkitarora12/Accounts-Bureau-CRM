@@ -113,6 +113,7 @@ public class VisitReportController {
             record.setOpportunity(form.getOpportunity());
             record.setRevisitRequired(form.isRevisitRequired());
             record.setAgreedForDemo(form.isAgreedForDemo());
+            record.setOtherOpportunities(form.getOtherOpportunities());
             record.setEmployee(user);
 
             if (customLabels != null && customValues != null && customLabels.size() == customValues.size()) {
@@ -260,6 +261,7 @@ public class VisitReportController {
         form.setOpportunity(record.getOpportunity());
         form.setRevisitRequired(record.getRevisitRequired());
         form.setAgreedForDemo(record.getAgreedForDemo());
+        form.setOtherOpportunities(record.getOtherOpportunities());
 
         model.addAttribute("form", form);
         model.addAttribute("id", id); 
@@ -316,6 +318,7 @@ public class VisitReportController {
         record.setOpportunity(form.getOpportunity());
         record.setRevisitRequired(form.isRevisitRequired());
         record.setAgreedForDemo(form.isAgreedForDemo());
+        record.setOtherOpportunities(form.getOtherOpportunities());
         record.setEmployee(emp);
 
         service.update(record);

@@ -266,12 +266,19 @@
                     <label
                       for="opportunity"
                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                      >Opportunity</label
                     >
+                      Opportunity
+                    </label>
+
+                    <!-- Dropdown -->
                     <select
                       id="opportunity"
                       th:field="*{opportunity}"
-                      class="mb-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      class="mb-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
+                            focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 
+                            dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
+                            dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      onchange="handleOpportunityChange(this)"
                     >
                       <option value="">-- Select Opportunity --</option>
                       <option value="None">None</option>
@@ -280,9 +287,21 @@
                       <option value="TSS">TSS</option>
                       <option value="Service">Service</option>
                       <option value="Customization">Customization</option>
+                      <option value="Other">Other</option>
                     </select>
                   </div>
 
+                  <!-- Hidden input (shown only when 'Other' is selected) -->
+                  <input
+                    type="text"
+                    id="otherOpportunityInput"
+                    th:field="*{otherOpportunities}"  
+                    placeholder="Enter other opportunity"
+                    class="hidden mt-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
+                          focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 
+                          dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
+                          dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  />
 
                   <!-- Dynamic Custom Fields -->
                   <div id="customFieldsContainer" class="mb-3"></div>
@@ -333,6 +352,18 @@
 
           container.appendChild(fieldDiv);
       }
+
+      function handleOpportunityChange(selectEl) {
+          const otherInput = document.getElementById("otherOpportunityInput");
+
+          if (selectEl.value === "Other") {
+            otherInput.classList.remove("hidden");
+            otherInput.focus();
+          } else {
+            otherInput.classList.add("hidden");
+            otherInput.value = ""; // clear when not needed
+          }
+        }
 
       function removeCustomField(id) {
           const fieldDiv = document.querySelector(`[data-field-id='${id}']`);

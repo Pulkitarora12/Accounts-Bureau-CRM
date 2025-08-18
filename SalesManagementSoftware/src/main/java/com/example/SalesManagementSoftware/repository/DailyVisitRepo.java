@@ -30,7 +30,7 @@ public interface  DailyVisitRepo extends org.springframework.data.jpa.repository
     @Query("SELECT COUNT(v) FROM VisitRecord v WHERE v.opportunity = 'New License' AND DATE(v.dateFilled) = :today AND v.employee = :employee")
     long countReportsWithNewLicense(@Param("today") LocalDate today, Employee employee);
 
-    @Query("SELECT COUNT(v) FROM VisitRecord v WHERE v.customFields['Other Opportunities'] IS NOT NULL AND DATE(v.dateFilled) = :today AND v.employee = :employee")
+    @Query("SELECT COUNT(v) FROM VisitRecord v WHERE ((v.opportunity = 'Other' AND v.otherOpportunities IS NOT NULL AND v.otherOpportunities != '') OR (v.otherOpportunities IS NOT NULL AND v.otherOpportunities != '' AND TRIM(v.otherOpportunities) != '')) AND DATE(v.dateFilled) = :today AND v.employee = :employee")
     long countReportsWithOtherOpportunities(@Param("today") LocalDate today, Employee employee);
 
     // @Query("SELECT COUNT(v) FROM VisitRecord v WHERE DATE(v.dateFilled) = :today")

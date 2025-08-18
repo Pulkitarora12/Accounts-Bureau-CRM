@@ -54,7 +54,7 @@ public class VisitRecordForm {
     private String opportunity; 
     // e.g. None/New license/Upgrade/TSS/Service/Customization
 
-    private String otherOpportunites;
+    private String otherOpportunities;
 
     private boolean revisitRequired;
     private boolean agreedForDemo;
