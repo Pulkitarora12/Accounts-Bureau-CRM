@@ -1,5 +1,6 @@
 package com.example.SalesManagementSoftware.forms;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -55,6 +56,8 @@ public class VisitRecordForm {
     // e.g. None/New license/Upgrade/TSS/Service/Customization
 
     private String otherOpportunities;
+
+    private LocalDate dateOfRevisit;
 
     private boolean revisitRequired;
     private boolean agreedForDemo;

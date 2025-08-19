@@ -115,6 +115,7 @@ public class VisitReportController {
             record.setAgreedForDemo(form.isAgreedForDemo());
             record.setOtherOpportunities(form.getOtherOpportunities());
             record.setEmployee(user);
+            record.setDateOfRevisit(form.getDateOfRevisit());
 
             if (customLabels != null && customValues != null && customLabels.size() == customValues.size()) {
                 for (int i = 0; i < customLabels.size(); i++) {
@@ -262,6 +263,7 @@ public class VisitReportController {
         form.setRevisitRequired(record.getRevisitRequired());
         form.setAgreedForDemo(record.getAgreedForDemo());
         form.setOtherOpportunities(record.getOtherOpportunities());
+        form.setDateOfRevisit(record.getDateOfRevisit());
 
         model.addAttribute("form", form);
         model.addAttribute("id", id); 
@@ -320,6 +322,7 @@ public class VisitReportController {
         record.setAgreedForDemo(form.isAgreedForDemo());
         record.setOtherOpportunities(form.getOtherOpportunities());
         record.setEmployee(emp);
+        record.setDateOfRevisit(form.getDateOfRevisit());
 
         service.update(record);
 

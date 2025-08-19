@@ -129,6 +129,7 @@
                   <th scope="col" class="px-6 py-3">Last Upgrade</th>
                   <th scope="col" class="px-6 py-3">Opportunity</th>
                   <th scope="col" class="px-6 py-3">Revisit Required</th>
+                  <th scope="col" class="px-6 py-3">Date of Revisit</th>
                   <th scope="col" class="px-6 py-3">Agreed for Demo</th>
                   <th scope="col" class="px-6 py-3">Date Filled</th>
                   <th scope="col" class="px-6 py-3">Employee</th>
@@ -189,6 +190,9 @@
                     <span th:text="${v.revisitRequired} ? 'Yes' : 'No'"
                       >No</span
                     >
+                  </td>
+                  <td class="px-6 py-4" th:text="${v.dateOfRevisit ?: 'N/A'}">
+                    Date Of Revisit
                   </td>
                   <td class="px-6 py-4">
                     <div

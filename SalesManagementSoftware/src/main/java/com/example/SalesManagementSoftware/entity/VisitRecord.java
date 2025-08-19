@@ -1,5 +1,6 @@
 package com.example.SalesManagementSoftware.entity;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -46,6 +47,8 @@ public class VisitRecord {
     private String otherOpportunities;
 
     private Boolean revisitRequired;
+
+    private LocalDate dateOfRevisit;
 
     private Boolean agreedForDemo;
 

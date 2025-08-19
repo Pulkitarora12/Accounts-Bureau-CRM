@@ -1,5 +1,6 @@
 package com.example.SalesManagementSoftware.repository;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -49,5 +50,7 @@ public interface VisitRecordRepository extends JpaRepository<VisitRecord, Long> 
     Page<VisitRecord> findByEmployeeAndLastUpgrade(Employee user, String lastUpgrade, Pageable pageable);
 
     Page<VisitRecord> findByEmployeeAndOpportunityContaining(Employee user, String opportunity, Pageable pageable);
+
+    List<VisitRecord> findByDateOfRevisit(LocalDate date);
 
 }
