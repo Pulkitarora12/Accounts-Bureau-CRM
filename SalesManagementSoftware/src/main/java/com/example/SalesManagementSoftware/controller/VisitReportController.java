@@ -237,13 +237,13 @@ public class VisitReportController {
     @GetMapping("/delete/{id}")
     public String deleteVisitRecord(@PathVariable Long id) {
         service.delete(id);
-        logger.info("Visit record deleted: {}", id);
+//        logger.info("Visit record deleted: {}", id);
         return "redirect:/user/visit";
     }
 
     @GetMapping("/view/{id}")
     public String updateView (@PathVariable Long id, Model model) {
-        logger.info("Viewing visit record: {}", id);
+//        logger.info("Viewing visit record: {}", id);
 
         var record = service.getById(id);
 
@@ -281,7 +281,7 @@ public class VisitReportController {
         
         if (result.hasErrors()) {
             result.getAllErrors().forEach(error -> {
-                logger.error("Validation error: {}", error.toString());
+//                logger.error("Validation error: {}", error.toString());
                 if (error instanceof FieldError fieldError) {
                     logger.error("Field: {}, Message: {}", fieldError.getField(), fieldError.getDefaultMessage());
                 }

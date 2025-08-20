@@ -14,7 +14,6 @@ public class Helper {
     Logger logger = LogManager.getLogger(Helper.class);
     
     if (authentication == null) {
-        logger.warn("No authentication found — user might not be logged in.");
         return null; // or throw a custom exception
     }
 
@@ -27,14 +26,12 @@ public class Helper {
 
         if ("google".equalsIgnoreCase(registerId)) {
             email = principal.getAttribute("email");
-            logger.info("Email from Google login: " + email);
         } else {
             logger.warn("OAuth2 provider not handled: " + registerId);
         }
 
     } else {
         email = authentication.getName();
-        logger.info("Email from local DB: " + email);
     }
 
     return email;

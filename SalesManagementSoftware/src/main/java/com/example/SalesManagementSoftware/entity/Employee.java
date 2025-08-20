@@ -78,8 +78,8 @@ public class Employee implements UserDetails {
     private List<VisitRecord> reports = new ArrayList<>();
 
     // Add expenses relationship
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<Expenses> expenses = new ArrayList<>();
+//    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+//    private List<Expenses> expenses = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

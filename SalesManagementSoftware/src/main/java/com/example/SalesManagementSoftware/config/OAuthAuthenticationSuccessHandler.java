@@ -35,7 +35,7 @@ public class OAuthAuthenticationSuccessHandler implements AuthenticationSuccessH
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
             Authentication authentication) throws IOException, ServletException {
-        logger.info("OAuthAuthenticationSuccessHandler");
+//        logger.info("OAuthAuthenticationSuccessHandler");
 
         // Get user details from OAuth2
         DefaultOAuth2User user = (DefaultOAuth2User) authentication.getPrincipal();
@@ -44,7 +44,7 @@ public class OAuthAuthenticationSuccessHandler implements AuthenticationSuccessH
         var oauth = (OAuth2AuthenticationToken) authentication;
         String clientId = oauth.getAuthorizedClientRegistrationId();
         
-        logger.info(clientId);
+//        logger.info(clientId);
 
         String email = null;
         String name = null;
@@ -74,23 +74,23 @@ public class OAuthAuthenticationSuccessHandler implements AuthenticationSuccessH
             newUser.setRole(Role.EMPLOYEE);
             
             service.saveUser(newUser, true);
-            logger.info("New user created: " + email);
+//            logger.info("New user created: " + email);
             
             // Redirect to verification page since user is not enabled
             response.sendRedirect("/login?error=verification");
             return;
         } else {
-            logger.info("Existing user logging in: " + email);
+//            logger.info("Existing user logging in: " + email);
             
             // Check if existing user is enabled
             if (!existingUser.isEnabled()) {
-                logger.info("User not enabled, redirecting to verification: " + email);
+//                logger.info("User not enabled, redirecting to verification: " + email);
                 response.sendRedirect("/login?error=verification");
                 return;
             }
             
             // User exists and is enabled - allow login
-            logger.info("User login successful: " + email);
+//            logger.info("User login successful: " + email);
         }
 
         // Redirect to profile if user is enabled
