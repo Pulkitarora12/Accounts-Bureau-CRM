@@ -451,3 +451,383 @@ Unconditional classes:
 2025-08-20T22:07:51.034+05:30  INFO 18868 --- [crm] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2025-08-20T22:07:51.036+05:30  INFO 18868 --- [crm] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
 2025-08-20T22:07:51.042+05:30  INFO 18868 --- [crm] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2025-08-20T22:36:44.155+05:30  INFO 6576 --- [crm] [restartedMain] c.e.S.SalesManagementSoftwareApplication : Starting SalesManagementSoftwareApplication using Java 21.0.7 with PID 6576 (C:\Users\PULKIT ARORA\Desktop\Project\SalesManagementSoftware\SalesManagementSoftware\target\classes started by PULKIT ARORA in C:\Users\PULKIT ARORA\Desktop\Project\SalesManagementSoftware)
+2025-08-20T22:36:44.155+05:30  INFO 6576 --- [crm] [restartedMain] c.e.S.SalesManagementSoftwareApplication : The following 1 profile is active: "dev"
+2025-08-20T22:36:44.285+05:30  INFO 6576 --- [crm] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-08-20T22:36:44.285+05:30  INFO 6576 --- [crm] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-08-20T22:36:45.876+05:30  INFO 6576 --- [crm] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-20T22:36:46.031+05:30  INFO 6576 --- [crm] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 132 ms. Found 4 JPA repository interfaces.
+2025-08-20T22:36:47.512+05:30  INFO 6576 --- [crm] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-08-20T22:36:47.557+05:30  INFO 6576 --- [crm] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-08-20T22:36:47.559+05:30  INFO 6576 --- [crm] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-08-20T22:36:47.694+05:30  INFO 6576 --- [crm] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-08-20T22:36:47.694+05:30  INFO 6576 --- [crm] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3406 ms
+2025-08-20T22:36:48.121+05:30  INFO 6576 --- [crm] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-20T22:36:48.263+05:30  INFO 6576 --- [crm] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.18.Final
+2025-08-20T22:36:48.304+05:30  INFO 6576 --- [crm] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-08-20T22:36:48.815+05:30  INFO 6576 --- [crm] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-20T22:36:48.848+05:30  INFO 6576 --- [crm] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-08-20T22:36:49.378+05:30  INFO 6576 --- [crm] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@26acc5dc
+2025-08-20T22:36:49.378+05:30  INFO 6576 --- [crm] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-08-20T22:36:49.455+05:30  WARN 6576 --- [crm] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-20T22:36:49.455+05:30  WARN 6576 --- [crm] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-08-20T22:36:49.477+05:30  INFO 6576 --- [crm] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-08-20T22:36:50.916+05:30  INFO 6576 --- [crm] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-20T22:36:51.044+05:30  INFO 6576 --- [crm] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-20T22:36:51.718+05:30  INFO 6576 --- [crm] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-08-20T22:36:53.685+05:30  WARN 6576 --- [crm] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-20T22:36:53.820+05:30  INFO 6576 --- [crm] [restartedMain] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-08-20T22:36:53.822+05:30  WARN 6576 --- [crm] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-08-20T22:36:54.936+05:30  INFO 6576 --- [crm] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-08-20T22:36:54.996+05:30  INFO 6576 --- [crm] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-08-20T22:36:55.018+05:30  INFO 6576 --- [crm] [restartedMain] c.e.S.SalesManagementSoftwareApplication : Started SalesManagementSoftwareApplication in 12.003 seconds (process running for 13.269)
+2025-08-20T22:37:33.439+05:30  INFO 6576 --- [crm] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-08-20T22:37:33.464+05:30  INFO 6576 --- [crm] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-08-20T22:37:33.472+05:30  INFO 6576 --- [crm] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-20T22:37:33.482+05:30  INFO 6576 --- [crm] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-08-20T22:37:33.507+05:30  INFO 6576 --- [crm] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-08-20T22:54:16.122+05:30  INFO 8736 --- [crm] [restartedMain] c.e.S.SalesManagementSoftwareApplication : Starting SalesManagementSoftwareApplication using Java 21.0.7 with PID 8736 (C:\Users\PULKIT ARORA\Desktop\Project\SalesManagementSoftware\SalesManagementSoftware\target\classes started by PULKIT ARORA in C:\Users\PULKIT ARORA\Desktop\Project\SalesManagementSoftware)
+2025-08-20T22:54:16.131+05:30  INFO 8736 --- [crm] [restartedMain] c.e.S.SalesManagementSoftwareApplication : The following 1 profile is active: "dev"
+2025-08-20T22:54:16.239+05:30  INFO 8736 --- [crm] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-08-20T22:54:16.241+05:30  INFO 8736 --- [crm] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-08-20T22:54:17.682+05:30  INFO 8736 --- [crm] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-20T22:54:17.796+05:30  INFO 8736 --- [crm] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 109 ms. Found 4 JPA repository interfaces.
+2025-08-20T22:54:19.017+05:30  INFO 8736 --- [crm] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-08-20T22:54:19.052+05:30  INFO 8736 --- [crm] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-08-20T22:54:19.052+05:30  INFO 8736 --- [crm] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-08-20T22:54:19.157+05:30  INFO 8736 --- [crm] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-08-20T22:54:19.159+05:30  INFO 8736 --- [crm] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2916 ms
+2025-08-20T22:54:19.491+05:30  INFO 8736 --- [crm] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-20T22:54:19.619+05:30  INFO 8736 --- [crm] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.18.Final
+2025-08-20T22:54:19.669+05:30  INFO 8736 --- [crm] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-08-20T22:54:20.236+05:30  INFO 8736 --- [crm] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-20T22:54:20.285+05:30  INFO 8736 --- [crm] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-08-20T22:54:20.835+05:30  INFO 8736 --- [crm] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1ccda418
+2025-08-20T22:54:20.844+05:30  INFO 8736 --- [crm] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-08-20T22:54:20.926+05:30  WARN 8736 --- [crm] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-20T22:54:20.926+05:30  WARN 8736 --- [crm] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-08-20T22:54:20.945+05:30  INFO 8736 --- [crm] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-08-20T22:54:22.479+05:30  INFO 8736 --- [crm] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-20T22:54:22.613+05:30  INFO 8736 --- [crm] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-20T22:54:23.345+05:30  INFO 8736 --- [crm] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-08-20T22:54:25.491+05:30  WARN 8736 --- [crm] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-20T22:54:25.670+05:30  INFO 8736 --- [crm] [restartedMain] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-08-20T22:54:25.670+05:30  WARN 8736 --- [crm] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-08-20T22:54:26.917+05:30  INFO 8736 --- [crm] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-08-20T22:54:26.985+05:30  INFO 8736 --- [crm] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-08-20T22:54:27.005+05:30  INFO 8736 --- [crm] [restartedMain] c.e.S.SalesManagementSoftwareApplication : Started SalesManagementSoftwareApplication in 11.698 seconds (process running for 12.495)
+2025-08-20T22:54:57.331+05:30  INFO 8736 --- [crm] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-20T22:54:57.331+05:30  INFO 8736 --- [crm] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-08-20T22:54:57.331+05:30  INFO 8736 --- [crm] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-08-20T22:54:58.648+05:30  WARN 8736 --- [crm] [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource css/style.css.]
+2025-08-20T22:54:58.970+05:30  WARN 8736 --- [crm] [http-nio-8080-exec-5] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2025-08-20T22:55:05.920+05:30  WARN 8736 --- [crm] [http-nio-8080-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource user/css/style.css.]
+2025-08-20T22:55:06.162+05:30  WARN 8736 --- [crm] [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2025-08-20T22:55:18.057+05:30  WARN 8736 --- [crm] [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource user/css/style.css.]
+2025-08-20T22:55:18.159+05:30  WARN 8736 --- [crm] [http-nio-8080-exec-9] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2025-08-20T22:55:18.897+05:30  WARN 8736 --- [crm] [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource user/visit/css/style.css.]
+2025-08-20T22:55:18.902+05:30  WARN 8736 --- [crm] [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource js/admin.js.]
+2025-08-20T22:55:18.960+05:30  WARN 8736 --- [crm] [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource js/admin.js.]
+2025-08-20T22:55:19.057+05:30  WARN 8736 --- [crm] [http-nio-8080-exec-5] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2025-08-20T22:59:09.888+05:30  WARN 8736 --- [crm] [http-nio-8080-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource user/visit/css/style.css.]
+2025-08-20T22:59:09.916+05:30  WARN 8736 --- [crm] [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource js/admin.js.]
+2025-08-20T22:59:10.012+05:30  WARN 8736 --- [crm] [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource js/admin.js.]
+2025-08-20T22:59:10.155+05:30  WARN 8736 --- [crm] [http-nio-8080-exec-5] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2025-08-20T22:59:18.875+05:30  INFO 8736 --- [crm] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-08-20T22:59:18.888+05:30  INFO 8736 --- [crm] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-08-20T22:59:18.897+05:30  INFO 8736 --- [crm] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-20T22:59:18.897+05:30  INFO 8736 --- [crm] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-08-20T22:59:18.905+05:30  INFO 8736 --- [crm] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-08-20T23:20:13.538+05:30  INFO 9144 --- [crm] [restartedMain] c.e.S.SalesManagementSoftwareApplication : Starting SalesManagementSoftwareApplication using Java 21.0.7 with PID 9144 (C:\Users\PULKIT ARORA\Desktop\Project\SalesManagementSoftware\SalesManagementSoftware\target\classes started by PULKIT ARORA in C:\Users\PULKIT ARORA\Desktop\Project\SalesManagementSoftware)
+2025-08-20T23:20:13.543+05:30  INFO 9144 --- [crm] [restartedMain] c.e.S.SalesManagementSoftwareApplication : No active profile set, falling back to 1 default profile: "default"
+2025-08-20T23:20:13.647+05:30  INFO 9144 --- [crm] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-08-20T23:20:13.648+05:30  INFO 9144 --- [crm] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-08-20T23:20:15.073+05:30  INFO 9144 --- [crm] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-20T23:20:15.197+05:30  INFO 9144 --- [crm] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 108 ms. Found 4 JPA repository interfaces.
+2025-08-20T23:20:16.411+05:30  INFO 9144 --- [crm] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-08-20T23:20:16.442+05:30  INFO 9144 --- [crm] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-08-20T23:20:16.442+05:30  INFO 9144 --- [crm] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-08-20T23:20:16.539+05:30  INFO 9144 --- [crm] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-08-20T23:20:16.539+05:30  INFO 9144 --- [crm] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2889 ms
+2025-08-20T23:20:16.966+05:30  INFO 9144 --- [crm] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-20T23:20:17.090+05:30  INFO 9144 --- [crm] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.18.Final
+2025-08-20T23:20:17.132+05:30  INFO 9144 --- [crm] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-08-20T23:20:17.595+05:30  INFO 9144 --- [crm] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-20T23:20:17.621+05:30  INFO 9144 --- [crm] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-08-20T23:20:18.124+05:30  INFO 9144 --- [crm] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1b32b059
+2025-08-20T23:20:18.132+05:30  INFO 9144 --- [crm] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-08-20T23:20:18.199+05:30  WARN 9144 --- [crm] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-20T23:20:18.202+05:30  WARN 9144 --- [crm] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-08-20T23:20:18.230+05:30  INFO 9144 --- [crm] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-08-20T23:20:19.663+05:30  INFO 9144 --- [crm] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-20T23:20:19.789+05:30  INFO 9144 --- [crm] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-20T23:20:20.471+05:30  INFO 9144 --- [crm] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-08-20T23:20:22.469+05:30  WARN 9144 --- [crm] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-20T23:20:22.609+05:30  INFO 9144 --- [crm] [restartedMain] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-08-20T23:20:22.617+05:30  WARN 9144 --- [crm] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-08-20T23:20:23.696+05:30  INFO 9144 --- [crm] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-08-20T23:20:23.745+05:30  INFO 9144 --- [crm] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-08-20T23:20:23.769+05:30  INFO 9144 --- [crm] [restartedMain] c.e.S.SalesManagementSoftwareApplication : Started SalesManagementSoftwareApplication in 10.992 seconds (process running for 11.9)
+2025-08-20T23:20:30.917+05:30  INFO 9144 --- [crm] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-20T23:20:30.917+05:30  INFO 9144 --- [crm] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-08-20T23:20:30.917+05:30  INFO 9144 --- [crm] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-08-20T23:20:31.853+05:30  WARN 9144 --- [crm] [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource user/css/style.css.]
+2025-08-20T23:20:32.092+05:30  WARN 9144 --- [crm] [http-nio-8080-exec-5] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2025-08-20T23:20:32.635+05:30  WARN 9144 --- [crm] [http-nio-8080-exec-9] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource css/style.css.]
+2025-08-20T23:20:32.755+05:30  WARN 9144 --- [crm] [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2025-08-20T23:20:35.070+05:30  WARN 9144 --- [crm] [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource css/style.css.]
+2025-08-20T23:20:35.177+05:30  WARN 9144 --- [crm] [http-nio-8080-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2025-08-20T23:21:02.458+05:30  WARN 9144 --- [crm] [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.mail.MailAuthenticationException: Authentication failed]
+2025-08-20T23:21:02.606+05:30  WARN 9144 --- [crm] [http-nio-8080-exec-10] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource css/style.css.]
+2025-08-20T23:21:02.761+05:30  WARN 9144 --- [crm] [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2025-08-20T23:22:26.113+05:30  WARN 9144 --- [crm] [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.mail.MailAuthenticationException: Authentication failed]
+2025-08-20T23:22:26.227+05:30  WARN 9144 --- [crm] [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource css/style.css.]
+2025-08-20T23:22:26.402+05:30  WARN 9144 --- [crm] [http-nio-8080-exec-9] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2025-08-20T23:22:27.172+05:30  WARN 9144 --- [crm] [http-nio-8080-exec-5] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource css/style.css.]
+2025-08-20T23:22:27.281+05:30  WARN 9144 --- [crm] [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2025-08-20T23:22:29.138+05:30  WARN 9144 --- [crm] [http-nio-8080-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource css/style.css.]
+2025-08-20T23:22:29.253+05:30  WARN 9144 --- [crm] [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2025-08-20T23:22:39.325+05:30  WARN 9144 --- [crm] [http-nio-8080-exec-9] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.mail.MailAuthenticationException: Authentication failed]
+2025-08-20T23:22:39.427+05:30  WARN 9144 --- [crm] [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource css/style.css.]
+2025-08-20T23:22:39.555+05:30  WARN 9144 --- [crm] [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2025-08-20T23:22:46.616+05:30  WARN 9144 --- [crm] [http-nio-8080-exec-8] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource css/style.css.]
+2025-08-20T23:22:46.842+05:30  WARN 9144 --- [crm] [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2025-08-20T23:22:53.714+05:30  WARN 9144 --- [crm] [http-nio-8080-exec-5] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource css/style.css.]
+2025-08-20T23:22:53.826+05:30  WARN 9144 --- [crm] [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2025-08-20T23:22:59.564+05:30  WARN 9144 --- [crm] [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource user/css/style.css.]
+2025-08-20T23:22:59.787+05:30  WARN 9144 --- [crm] [http-nio-8080-exec-10] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2025-08-20T23:25:23.139+05:30  INFO 9144 --- [crm] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-08-20T23:25:23.150+05:30  INFO 9144 --- [crm] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-08-20T23:25:23.163+05:30  INFO 9144 --- [crm] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-20T23:25:23.167+05:30  INFO 9144 --- [crm] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-08-20T23:25:23.178+05:30  INFO 9144 --- [crm] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-08-20T23:25:31.658+05:30  INFO 11516 --- [crm] [restartedMain] c.e.S.SalesManagementSoftwareApplication : Starting SalesManagementSoftwareApplication using Java 21.0.7 with PID 11516 (C:\Users\PULKIT ARORA\Desktop\Project\SalesManagementSoftware\SalesManagementSoftware\target\classes started by PULKIT ARORA in C:\Users\PULKIT ARORA\Desktop\Project\SalesManagementSoftware)
+2025-08-20T23:25:31.666+05:30  INFO 11516 --- [crm] [restartedMain] c.e.S.SalesManagementSoftwareApplication : No active profile set, falling back to 1 default profile: "default"
+2025-08-20T23:25:31.802+05:30  INFO 11516 --- [crm] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-08-20T23:25:31.802+05:30  INFO 11516 --- [crm] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-08-20T23:25:33.207+05:30  INFO 11516 --- [crm] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-20T23:25:33.330+05:30  INFO 11516 --- [crm] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 103 ms. Found 4 JPA repository interfaces.
+2025-08-20T23:25:34.529+05:30  INFO 11516 --- [crm] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-08-20T23:25:34.560+05:30  INFO 11516 --- [crm] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-08-20T23:25:34.562+05:30  INFO 11516 --- [crm] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-08-20T23:25:34.653+05:30  INFO 11516 --- [crm] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-08-20T23:25:34.653+05:30  INFO 11516 --- [crm] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2851 ms
+2025-08-20T23:25:35.067+05:30  INFO 11516 --- [crm] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-20T23:25:35.170+05:30  INFO 11516 --- [crm] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.18.Final
+2025-08-20T23:25:35.212+05:30  INFO 11516 --- [crm] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-08-20T23:25:35.715+05:30  INFO 11516 --- [crm] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-20T23:25:35.748+05:30  INFO 11516 --- [crm] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-08-20T23:25:36.299+05:30  INFO 11516 --- [crm] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@18275ebb
+2025-08-20T23:25:36.310+05:30  INFO 11516 --- [crm] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-08-20T23:25:36.393+05:30  WARN 11516 --- [crm] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-20T23:25:36.393+05:30  WARN 11516 --- [crm] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-08-20T23:25:36.414+05:30  INFO 11516 --- [crm] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-08-20T23:25:37.847+05:30  INFO 11516 --- [crm] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-20T23:25:37.976+05:30  INFO 11516 --- [crm] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-20T23:25:38.632+05:30  INFO 11516 --- [crm] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-08-20T23:25:40.794+05:30  WARN 11516 --- [crm] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-20T23:25:40.943+05:30  INFO 11516 --- [crm] [restartedMain] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-08-20T23:25:40.943+05:30  WARN 11516 --- [crm] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-08-20T23:25:42.085+05:30  INFO 11516 --- [crm] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-08-20T23:25:42.159+05:30  INFO 11516 --- [crm] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-08-20T23:25:42.183+05:30  INFO 11516 --- [crm] [restartedMain] c.e.S.SalesManagementSoftwareApplication : Started SalesManagementSoftwareApplication in 11.387 seconds (process running for 12.132)
+2025-08-20T23:25:47.398+05:30  INFO 11516 --- [crm] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-20T23:25:47.398+05:30  INFO 11516 --- [crm] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-08-20T23:25:47.398+05:30  INFO 11516 --- [crm] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-08-20T23:25:48.080+05:30  WARN 11516 --- [crm] [http-nio-8080-exec-5] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource css/style.css.]
+2025-08-20T23:25:48.302+05:30  WARN 11516 --- [crm] [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2025-08-20T23:25:49.359+05:30  WARN 11516 --- [crm] [http-nio-8080-exec-9] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource css/style.css.]
+2025-08-20T23:25:49.485+05:30  WARN 11516 --- [crm] [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2025-08-20T23:26:21.225+05:30  WARN 11516 --- [crm] [http-nio-8080-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1062, SQLState: 23000
+2025-08-20T23:26:21.225+05:30 ERROR 11516 --- [crm] [http-nio-8080-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : Duplicate entry 'pulkitarora0707@gmail.com' for key 'employee.UKfopic1oh5oln2khj8eat6ino0'
+2025-08-20T23:26:21.276+05:30  WARN 11516 --- [crm] [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.dao.DataIntegrityViolationException: could not execute statement [Duplicate entry 'pulkitarora0707@gmail.com' for key 'employee.UKfopic1oh5oln2khj8eat6ino0'] [insert into employee (about,department,email,email_token,email_verified,enabled,employee_name,password,phone_number,profile_link,provider,providerurl,role) values (?,?,?,?,?,?,?,?,?,?,?,?,?)]; SQL [insert into employee (about,department,email,email_token,email_verified,enabled,employee_name,password,phone_number,profile_link,provider,providerurl,role) values (?,?,?,?,?,?,?,?,?,?,?,?,?)]; constraint [employee.UKfopic1oh5oln2khj8eat6ino0]]
+2025-08-20T23:26:21.442+05:30  WARN 11516 --- [crm] [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource css/style.css.]
+2025-08-20T23:26:21.596+05:30  WARN 11516 --- [crm] [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2025-08-20T23:26:23.968+05:30  WARN 11516 --- [crm] [http-nio-8080-exec-10] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource css/style.css.]
+2025-08-20T23:26:24.076+05:30  WARN 11516 --- [crm] [http-nio-8080-exec-9] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2025-08-20T23:26:57.385+05:30  INFO 11516 --- [crm] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-08-20T23:26:57.418+05:30  INFO 11516 --- [crm] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-08-20T23:26:57.434+05:30  INFO 11516 --- [crm] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-20T23:26:57.451+05:30  INFO 11516 --- [crm] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-08-20T23:26:57.477+05:30  INFO 11516 --- [crm] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-08-20T23:45:33.294+05:30  INFO 416 --- [crm] [restartedMain] c.e.S.SalesManagementSoftwareApplication : Starting SalesManagementSoftwareApplication using Java 21.0.7 with PID 416 (C:\Users\PULKIT ARORA\Desktop\Project\SalesManagementSoftware\SalesManagementSoftware\target\classes started by PULKIT ARORA in C:\Users\PULKIT ARORA\Desktop\Project\SalesManagementSoftware)
+2025-08-20T23:45:33.299+05:30  INFO 416 --- [crm] [restartedMain] c.e.S.SalesManagementSoftwareApplication : The following 1 profile is active: "dev"
+2025-08-20T23:45:33.425+05:30  INFO 416 --- [crm] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-08-20T23:45:33.426+05:30  INFO 416 --- [crm] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-08-20T23:45:34.902+05:30  INFO 416 --- [crm] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-20T23:45:35.027+05:30  INFO 416 --- [crm] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 110 ms. Found 4 JPA repository interfaces.
+2025-08-20T23:45:36.343+05:30  INFO 416 --- [crm] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-08-20T23:45:36.377+05:30  INFO 416 --- [crm] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-08-20T23:45:36.379+05:30  INFO 416 --- [crm] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-08-20T23:45:36.477+05:30  INFO 416 --- [crm] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-08-20T23:45:36.478+05:30  INFO 416 --- [crm] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3052 ms
+2025-08-20T23:45:36.852+05:30  INFO 416 --- [crm] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-20T23:45:37.017+05:30  INFO 416 --- [crm] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.18.Final
+2025-08-20T23:45:37.069+05:30  INFO 416 --- [crm] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-08-20T23:45:37.687+05:30  INFO 416 --- [crm] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-20T23:45:37.740+05:30  INFO 416 --- [crm] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-08-20T23:45:38.236+05:30  INFO 416 --- [crm] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3256db4a
+2025-08-20T23:45:38.238+05:30  INFO 416 --- [crm] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-08-20T23:45:38.310+05:30  WARN 416 --- [crm] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-20T23:45:38.312+05:30  WARN 416 --- [crm] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-08-20T23:45:38.333+05:30  INFO 416 --- [crm] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-08-20T23:45:39.872+05:30  INFO 416 --- [crm] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-20T23:45:39.991+05:30  INFO 416 --- [crm] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-20T23:45:40.674+05:30  INFO 416 --- [crm] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-08-20T23:45:42.664+05:30  WARN 416 --- [crm] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-20T23:45:42.843+05:30  INFO 416 --- [crm] [restartedMain] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-08-20T23:45:42.845+05:30  WARN 416 --- [crm] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-08-20T23:45:43.972+05:30  INFO 416 --- [crm] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-08-20T23:45:44.033+05:30  INFO 416 --- [crm] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-08-20T23:45:44.054+05:30  INFO 416 --- [crm] [restartedMain] c.e.S.SalesManagementSoftwareApplication : Started SalesManagementSoftwareApplication in 11.701 seconds (process running for 12.52)
+2025-08-20T23:45:47.960+05:30  INFO 416 --- [crm] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-08-20T23:45:47.978+05:30  INFO 416 --- [crm] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-08-20T23:45:47.984+05:30  INFO 416 --- [crm] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-20T23:45:47.991+05:30  INFO 416 --- [crm] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-08-20T23:45:48.005+05:30  INFO 416 --- [crm] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-08-20T23:47:01.263+05:30  INFO 1928 --- [crm] [restartedMain] c.e.S.SalesManagementSoftwareApplication : Starting SalesManagementSoftwareApplication using Java 21.0.7 with PID 1928 (C:\Users\PULKIT ARORA\Desktop\Project\SalesManagementSoftware\SalesManagementSoftware\target\classes started by PULKIT ARORA in C:\Users\PULKIT ARORA\Desktop\Project\SalesManagementSoftware)
+2025-08-20T23:47:01.271+05:30  INFO 1928 --- [crm] [restartedMain] c.e.S.SalesManagementSoftwareApplication : The following 1 profile is active: "dev"
+2025-08-20T23:47:01.364+05:30  INFO 1928 --- [crm] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-08-20T23:47:01.364+05:30  INFO 1928 --- [crm] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-08-20T23:47:02.881+05:30  INFO 1928 --- [crm] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-20T23:47:02.996+05:30  INFO 1928 --- [crm] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 102 ms. Found 4 JPA repository interfaces.
+2025-08-20T23:47:04.410+05:30  INFO 1928 --- [crm] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-08-20T23:47:04.440+05:30  INFO 1928 --- [crm] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-08-20T23:47:04.440+05:30  INFO 1928 --- [crm] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-08-20T23:47:04.549+05:30  INFO 1928 --- [crm] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-08-20T23:47:04.555+05:30  INFO 1928 --- [crm] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3185 ms
+2025-08-20T23:47:04.891+05:30  INFO 1928 --- [crm] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-20T23:47:05.068+05:30  INFO 1928 --- [crm] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.18.Final
+2025-08-20T23:47:05.132+05:30  INFO 1928 --- [crm] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-08-20T23:47:05.638+05:30  INFO 1928 --- [crm] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-20T23:47:05.694+05:30  INFO 1928 --- [crm] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-08-20T23:47:06.198+05:30  INFO 1928 --- [crm] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@433f3a12
+2025-08-20T23:47:06.198+05:30  INFO 1928 --- [crm] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-08-20T23:47:06.277+05:30  WARN 1928 --- [crm] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-20T23:47:06.280+05:30  WARN 1928 --- [crm] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-08-20T23:47:06.313+05:30  INFO 1928 --- [crm] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-08-20T23:47:07.772+05:30  INFO 1928 --- [crm] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-20T23:47:07.918+05:30  INFO 1928 --- [crm] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-20T23:47:08.586+05:30  INFO 1928 --- [crm] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-08-20T23:47:10.854+05:30  WARN 1928 --- [crm] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-20T23:47:11.012+05:30  INFO 1928 --- [crm] [restartedMain] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-08-20T23:47:11.012+05:30  WARN 1928 --- [crm] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-08-20T23:47:12.265+05:30  INFO 1928 --- [crm] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-08-20T23:47:12.330+05:30  INFO 1928 --- [crm] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-08-20T23:47:12.357+05:30  INFO 1928 --- [crm] [restartedMain] c.e.S.SalesManagementSoftwareApplication : Started SalesManagementSoftwareApplication in 11.995 seconds (process running for 12.77)
+2025-08-20T23:47:12.365+05:30  INFO 1928 --- [crm] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-08-20T23:47:12.382+05:30  INFO 1928 --- [crm] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-08-20T23:47:12.382+05:30  INFO 1928 --- [crm] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-20T23:47:12.390+05:30  INFO 1928 --- [crm] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-08-20T23:47:12.410+05:30  INFO 1928 --- [crm] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-08-20T23:47:17.339+05:30 ERROR 10048 --- [${APP_NAME}] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.util.PlaceholderResolutionException: Could not resolve placeholder 'APP_NAME' in value "${APP_NAME}"
+	at org.springframework.util.PlaceholderResolutionException.withValue(PlaceholderResolutionException.java:81) ~[spring-core-6.2.8.jar:6.2.8]
+	at org.springframework.util.PlaceholderParser$ParsedValue.resolve(PlaceholderParser.java:423) ~[spring-core-6.2.8.jar:6.2.8]
+	at org.springframework.util.PlaceholderParser.replacePlaceholders(PlaceholderParser.java:128) ~[spring-core-6.2.8.jar:6.2.8]
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:118) ~[spring-core-6.2.8.jar:6.2.8]
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:114) ~[spring-core-6.2.8.jar:6.2.8]
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:293) ~[spring-core-6.2.8.jar:6.2.8]
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:264) ~[spring-core-6.2.8.jar:6.2.8]
+	at org.springframework.core.env.AbstractPropertyResolver.resolveNestedPlaceholders(AbstractPropertyResolver.java:284) ~[spring-core-6.2.8.jar:6.2.8]
+	at org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertyResolver.getProperty(ConfigurationPropertySourcesPropertyResolver.java:81) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.context.properties.source.ConfigurationPropertySourcesPropertyResolver.getProperty(ConfigurationPropertySourcesPropertyResolver.java:62) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.core.env.AbstractEnvironment.getProperty(AbstractEnvironment.java:555) ~[spring-core-6.2.8.jar:6.2.8]
+	at org.springframework.boot.context.ContextIdApplicationContextInitializer.getApplicationId(ContextIdApplicationContextInitializer.java:68) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.context.ContextIdApplicationContextInitializer.getContextId(ContextIdApplicationContextInitializer.java:64) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.context.ContextIdApplicationContextInitializer.initialize(ContextIdApplicationContextInitializer.java:54) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.applyInitializers(SpringApplication.java:612) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.prepareContext(SpringApplication.java:383) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:317) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.5.3.jar:3.5.3]
+	at com.example.SalesManagementSoftware.SalesManagementSoftwareApplication.main(SalesManagementSoftwareApplication.java:17) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.5.3.jar:3.5.3]
+
+2025-08-20T23:48:04.755+05:30  INFO 17300 --- [crm] [restartedMain] c.e.S.SalesManagementSoftwareApplication : Starting SalesManagementSoftwareApplication using Java 21.0.7 with PID 17300 (C:\Users\PULKIT ARORA\Desktop\Project\SalesManagementSoftware\SalesManagementSoftware\target\classes started by PULKIT ARORA in C:\Users\PULKIT ARORA\Desktop\Project\SalesManagementSoftware)
+2025-08-20T23:48:04.763+05:30  INFO 17300 --- [crm] [restartedMain] c.e.S.SalesManagementSoftwareApplication : The following 1 profile is active: "dev"
+2025-08-20T23:48:04.863+05:30  INFO 17300 --- [crm] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-08-20T23:48:04.863+05:30  INFO 17300 --- [crm] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-08-20T23:48:06.278+05:30  INFO 17300 --- [crm] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-20T23:48:06.395+05:30  INFO 17300 --- [crm] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 102 ms. Found 4 JPA repository interfaces.
+2025-08-20T23:48:07.530+05:30  INFO 17300 --- [crm] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-08-20T23:48:07.559+05:30  INFO 17300 --- [crm] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-08-20T23:48:07.559+05:30  INFO 17300 --- [crm] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-08-20T23:48:07.666+05:30  INFO 17300 --- [crm] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-08-20T23:48:07.666+05:30  INFO 17300 --- [crm] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2803 ms
+2025-08-20T23:48:08.097+05:30  INFO 17300 --- [crm] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-20T23:48:08.225+05:30  INFO 17300 --- [crm] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.18.Final
+2025-08-20T23:48:08.283+05:30  INFO 17300 --- [crm] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-08-20T23:48:08.814+05:30  INFO 17300 --- [crm] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-20T23:48:08.851+05:30  INFO 17300 --- [crm] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-08-20T23:48:09.361+05:30  INFO 17300 --- [crm] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@753f55f8
+2025-08-20T23:48:09.369+05:30  INFO 17300 --- [crm] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-08-20T23:48:09.450+05:30  WARN 17300 --- [crm] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-20T23:48:09.450+05:30  WARN 17300 --- [crm] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-08-20T23:48:09.467+05:30  INFO 17300 --- [crm] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-08-20T23:48:10.946+05:30  INFO 17300 --- [crm] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-20T23:48:11.085+05:30  INFO 17300 --- [crm] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-20T23:48:11.821+05:30  INFO 17300 --- [crm] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-08-20T23:48:13.748+05:30  WARN 17300 --- [crm] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-20T23:48:13.893+05:30  INFO 17300 --- [crm] [restartedMain] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-08-20T23:48:13.893+05:30  WARN 17300 --- [crm] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-08-20T23:48:14.953+05:30  INFO 17300 --- [crm] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-08-20T23:48:15.015+05:30  INFO 17300 --- [crm] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-08-20T23:48:15.033+05:30  INFO 17300 --- [crm] [restartedMain] c.e.S.SalesManagementSoftwareApplication : Started SalesManagementSoftwareApplication in 11.102 seconds (process running for 11.845)
+2025-08-20T23:48:17.387+05:30  INFO 17300 --- [crm] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-08-20T23:48:17.403+05:30  INFO 17300 --- [crm] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-08-20T23:48:17.411+05:30  INFO 17300 --- [crm] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-20T23:48:17.419+05:30  INFO 17300 --- [crm] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-08-20T23:48:17.429+05:30  INFO 17300 --- [crm] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

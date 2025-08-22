@@ -165,7 +165,7 @@ public class VisitReportController {
         model.addAttribute("pageVisitRecord", pageVisitRecord);
         model.addAttribute("pageSize", size);
 
-        return "/user/reports"; // This should match your Thymeleaf template path
+        return "user/reports"; // This should match your Thymeleaf template path
     }
 
 

@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -28,7 +29,9 @@ public class UserServiceImpl implements UserService {
     public UserServiceImpl(PageRepository repo) {
         this.repo = repo;
     }
-    
+
+    @Value("${spring.mail.username}")
+    private String email;
 
     @Override
     public Employee saveUser(Employee user, boolean isNewUser) {
@@ -38,7 +41,7 @@ public class UserServiceImpl implements UserService {
             String emailLink = Helper.getLinkForEmailVerification(emailToken);
             user.setEmailToken(emailToken);
             emailService.sendEmail(
-                "pulkitpulkitarr@gmail.com", 
+                email,
                 "Verify Account : Email Contact Manager", 
                 emailLink
             );

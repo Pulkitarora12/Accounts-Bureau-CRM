@@ -30,6 +30,7 @@ public class DailyVisitServiceImpl implements DailyVisitService {
     }
 
     public void update(DailyRecord dailyRecord, LocalDate date) {
+        
         Employee emp = dailyRecord.getScoutName();
 
         DailyRecord record = repository.findByScoutNameAndDateFilled(emp, date).orElse(null);

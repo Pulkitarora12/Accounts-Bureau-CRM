@@ -70,7 +70,7 @@ public class PageController {
     public String processRegister(@Valid EmployeeForm userForm,BindingResult result,HttpSession session) {
         
         //fetch data from form
-//        System.out.println(userForm);
+       System.out.println(userForm);
 
         //validate form data
         if (result.hasErrors()) {
@@ -102,7 +102,7 @@ public class PageController {
 
         //message that info is saved
         session.setAttribute("message", "User registered successfully!");
-//        System.out.println("Session attribute 'message' set: " + session.getAttribute("message"));
+       System.out.println("Session attribute 'message' set: " + session.getAttribute("message"));
 
 
         //redirect to login page
