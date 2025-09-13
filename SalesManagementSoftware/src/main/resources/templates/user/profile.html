@@ -12,18 +12,17 @@
   </head>
   <body>
     <div id="main-content">
-
       <div th:if="${loggedInUser != null and loggedInUser.isEmployee()}">
-        <div th:replace="~{user/empSidebar :: empSidebar}"></div>
+        <div th:replace="~{user/empSidebar :: sidebar}"></div>
       </div>
 
       <div th:if="${loggedInUser != null and !loggedInUser.isEmployee()}">
-        <div th:replace="~{user/sidebar :: sidebar}"></div>
+        <div th:replace="~{user/sidebar2 :: sidebar}"></div>
       </div>
 
       <div
         id="profile-content"
-        class="sm:pl-66 pt-20 flex flex-col text-center"
+        class="sm:pl-66 pt-10 pt-20 flex flex-col text-center"
       >
         <div class="flex justify-center flex-col items-center">
           <!-- Profile Card -->

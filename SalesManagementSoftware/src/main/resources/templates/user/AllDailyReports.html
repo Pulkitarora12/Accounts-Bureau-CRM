@@ -11,101 +11,30 @@
   <body>
     <div id="content">
       <div th:if="${loggedInUser != null and loggedInUser.isEmployee()}">
-        <div th:replace="~{user/empSidebar :: empSidebar}"></div>
+        <div th:replace="~{user/empSidebar :: sidebar}"></div>
       </div>
 
       <div th:if="${loggedInUser != null and !loggedInUser.isEmployee()}">
-        <div th:replace="~{user/sidebar :: sidebar}"></div>
+        <div th:replace="~{user/sidebar2 :: sidebar}"></div>
       </div>
 
-      <div class="pl-66 pt-5 flex flex-col text-center">
+      <div class="pt-5 flex flex-col text-center pl-1 lg:pl-66">
         <h1 class="text-amber-50 text-5xl">All Daily Visit Records</h1>
 
         <div class="visits_container p-5">
-          <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <!-- Search Form -->
-            <div class="flex justify-center">
-              <!-- <form th:action="@{'/user/visit/search'}">
-                <div
-                  class="flex items-center justify-start gap-2 flex-wrap md:flex-nowrap pb-4 bg-white dark:bg-gray-900"
-                >
-                  <div>
-                    <select
-                      name="field"
-                      id="field_select"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    >
-                      <option selected>Select Field</option>
-                      <option value="scoutName">Scout Name</option>
-                      <option value="companyName">Company Name</option>
-                      <option value="contactPersonName">Contact Person</option>
-                      <option value="placeOfVisit">Place of Visit</option>
-                      <option value="newOrRevisit">New Or Revisit</option>
-                      <option value="contactNumber">Contact Number</option>
-                      <option value="natureOfBusiness">
-                        Nature of Business
-                      </option>
-                      <option value="computer">Computer</option>
-                      <option value="tally">Tally</option>
-                      <option value="opportunity">Opportunity</option>
-                      <option value="revisitRequired">Revisit Required</option>
-                      <option value="agreedForDemo">Agreed for Demo</option>
-                    </select>
-                  </div> -->
-
-              <!-- <div class="relative">
-                    <div
-                      class="absolute inset-y-0 left-0 flex items-center ps-3 pointer-events-none"
-                    >
-                      <svg
-                        class="w-4 h-4 text-gray-500 dark:text-gray-400"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                        />
-                      </svg>
-                    </div>
-                    <input
-                      name="keyword"
-                      type="text"
-                      id="table-search-visits"
-                      class="p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Search for visit records"
-                    />
-                  </div>
-
-                  <div>
-                    <button
-                      type="submit"
-                      class="px-2 py-1.5 rounded-lg bg-blue-700"
-                    >
-                      Search
-                    </button>
-                  </div>
-
-                  
-                </div>
-              </form> -->
-              <div>
-                <button
-                  type="button"
-                  onclick="exportData()"
-                  class="flex items-center px-2 py-1.5 rounded-lg bg-blue-700 mb-5"
-                >
-                  Export
-                </button>
-              </div>
-            </div>
+          <div class="relative overflow-x-auto shadow-md sm:rounded-lg flex justify-center">
+            <button
+              type="button"
+              onclick="exportData()"
+              class="px-4 py-2 rounded-lg bg-blue-700 text-white mb-5"
+           >
+              Export
+            </button>
+          </div>
 
             <table
               id="visit_table"
-              class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+              class="text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 lg:pl-64"
             >
               <thead
                 class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"

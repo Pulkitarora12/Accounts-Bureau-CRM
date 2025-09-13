@@ -12,11 +12,11 @@
     <div id="content">
       
       <div th:if="${loggedInUser != null and loggedInUser.isEmployee()}">
-        <div th:replace="~{user/empSidebar :: empSidebar}"></div>
+        <div th:replace="~{user/empSidebar :: sidebar}"></div>
       </div>
 
       <div th:if="${loggedInUser != null and !loggedInUser.isEmployee()}">
-        <div th:replace="~{user/sidebar :: sidebar}"></div>
+        <div th:replace="~{user/sidebar2 :: sidebar}"></div>
       </div>
 
       <div class="flex justify-center items-center min-h-screen p-4">

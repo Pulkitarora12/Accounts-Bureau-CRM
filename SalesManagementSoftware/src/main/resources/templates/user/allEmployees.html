@@ -11,14 +11,14 @@
   <body>
     <div id="content">
       <div th:if="${loggedInUser != null and loggedInUser.isEmployee()}">
-        <div th:replace="~{user/empSidebar :: empSidebar}"></div>
+        <div th:replace="~{user/empSidebar :: sidebar}"></div>
       </div>
 
       <div th:if="${loggedInUser != null and !loggedInUser.isEmployee()}">
-        <div th:replace="~{user/sidebar :: sidebar}"></div>
+        <div th:replace="~{user/sidebar2 :: sidebar}"></div>
       </div>
 
-      <div class="pl-66 pt-5 flex flex-col text-center">
+      <div class="pt-5 flex flex-col text-center pl-1 lg:pl-66">
         <h1 class="text-amber-50 text-5xl">All Employees</h1>
         <p class="text-amber-50">List of all the Employees</p>
 
@@ -99,34 +99,6 @@
                 </tr>
               </tbody>
             </table>
-
-            <!-- Pagination -->
-            <nav aria-label="Page navigation example" class="pt-10 pb-5">
-              <ul class="inline-flex -space-x-px text-base h-10">
-                <li th:unless="${page.first}">
-                  <a
-                    th:href="@{'/user/allEmployees/size='+${pageSize} + '&page='+${page.number-1}}"
-                    class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                    >Previous</a
-                  >
-                </li>
-                <li th:each="i : ${#numbers.sequence(0, page.totalPages - 1)}">
-                  <a
-                    th:href="@{'/user/allEmployees/?size='+${pageSize} + '&page='+${i}}"
-                    th:text="${i + 1}"
-                    th:classappend="${i == page.number} ? 'text-2xl font-bold border border-gray-600' : 'bg-gray-100'"
-                    class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                  ></a>
-                </li>
-                <li th:unless="${page.last}">
-                  <a
-                    th:href="@{'/user/allEmployees?size='+${pageSize} + '&page='+${page.number+1}}"
-                    class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                    >Next</a
-                  >
-                </li>
-              </ul>
-            </nav>
           </div>
         </div>
       </div>
